@@ -1,0 +1,24 @@
+<<<<<<< HEAD
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container" ng-controller="AuthController">
+        <a class="navbar-brand" href="#">Where To?</a>
+        <button ng-click="logout()" class="btn btn-default navbar-right navbar-btn ">Logout</button>
+    </div>
+</nav>
+<div ng-controller="MapController">
+    <div id="mapdisplay"></div>
+    <br>
+    <div class="col-md-4 col-md-offset-4">
+        <form name="locationForm" ng-submit="findLoc()">
+            <div class="input-group">
+                <input type="text" class="form-control input-lg" placeholder="add a destination" ng-model="map.location">
+                <span class="input-group-btn">
+          <button ng-click="findLoc()" class="btn-lg btn btn-default" type="button">Mark the Map!</button>
+        </span>
+            </div>
+        </form>
+    </div>
+</div>
+=======
+<div id="mapdisplay">MAP GOES HERE</div>
+>>>>>>> refs/remotes/origin/master
