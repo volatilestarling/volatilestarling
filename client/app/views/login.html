@@ -1,0 +1,15 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#/map">Where To?</a>
+        <button ui-sref="signup" class="btn btn-default navbar-right navbar-btn ">Sign Up</button>
+    </div>
+</nav>
+<img src="./assets/worldmap.png" alt="">
+<div id='login' class='text-center' ng-controller="AuthController">
+    <h1>show me the map!</h1>
+    <form name="loginForm" class="form-signin" ng-submit='login()'>
+        <input type='text' ng-model='user.email' class="form-control" placeholder="wanderlust@whereto.com">
+        <input type="password" ng-model='user.password' class="form-control" placeholder="password">
+        <button class="btn btn-lg btn-primary btn-block">login</button>
+    </form>
+</div>

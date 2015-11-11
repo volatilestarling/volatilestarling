@@ -1,0 +1,38 @@
+#mapdisplay {
+  height: 485px;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border: 2px solid teal;
+}
+
+nav button {
+  display: inline;
+  position: relative;
+}
+
+body { 
+  padding-top: 100px; 
+  font-family: 'Comfortaa', cursive;
+}
+
+#login, #signup {
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  width: 500px;
+  height: 300px;
+  margin-right: 80px;
+  margin-top: 100px;
+  float: right;
+}
+
+.navbar-brand {
+  font-size: 2.5em;
+}
+
+img {
+  float: left;
+  margin-top: 150px;
+  margin-left: 80px;
+  width: 500px;
+}
