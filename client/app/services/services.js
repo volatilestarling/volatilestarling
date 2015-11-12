@@ -1,55 +1,83 @@
 angular.module('where-to.services', [])
-.factory('MapService', function($http){
+  .factory('MapService', function($http) {
 
-  var styles = [{
-      "featureType": "water",
-      "elementType": "all",
-      "stylers": [{
-          "hue": "#008285"
-      }, {
-          "saturation": 100
-      }, {
-          "lightness": -66
-      }, {
-          "visibility": "on"
-      }]
-  }, {
-      "featureType": "landscape",
-      "elementType": "all",
-      "stylers": [{
-          "hue": "#CAFCE4"
-      }, {
-          "saturation": 85
-      }, {
-          "lightness": 0
-      }, {
-          "visibility": "on"
-      }]
-  }, {
-      "featureType": "poi.park",
-      "elementType": "all",
-      "stylers": [{
-          "hue": "#61C273"
-      }, {
-          "saturation": 2
-      }, {
-          "lightness": -27
-      }, {
-          "visibility": "on"
-      }]
-  }, {
-      "featureType": "road",
-      "elementType": "all",
-      "stylers": [{
-          "hue": "#B0C4C7"
-      }, {
-          "saturation": -83
-      }, {
-          "lightness": 26
-      }, {
-          "visibility": "on"
-      }]
-  }]
+    var styles = [{
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "simplified"
+        }]
+    }, {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [{
+            "visibility": "simplified"
+        }]
+    }, {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "simplified"
+        }]
+    }, {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "simplified"
+        }]
+    }, {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "simplified"
+        }]
+    }, {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "road.local",
+        "elementType": "all",
+        "stylers": [{
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [{
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [{
+            "color": "#84afa3"
+        }, {
+            "lightness": 52
+        }]
+    }, {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [{
+            "saturation": -17
+        }, {
+            "gamma": 0.36
+        }]
+    }, {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [{
+            "color": "#3f518c"
+        }]
+    }]
 
   function initMap() {
     var map = new google.maps.Map(document.getElementById('mapdisplay'), {
@@ -60,6 +88,7 @@ angular.module('where-to.services', [])
     map.setOptions({
         styles: styles
     });
+    return map;
   }
   
 
@@ -112,6 +141,8 @@ angular.module('where-to.services', [])
     return $http({
       method: 'GET',
       url: '/api/users'
+      //or request to /signedin?
+      //or set up root route on backend to handle this call?
     })
     .then(function (resp) {
       return resp.data;
