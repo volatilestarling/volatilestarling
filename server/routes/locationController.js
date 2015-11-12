@@ -46,45 +46,31 @@ module.exports = {
     // need to add location to userSchema too
     var findUser = Q.nbind(User.findOne, User);
     var findCity = Q.nbind(Location.findOne, Location);
-    findCity({ city: city, country: country })
-      .then(function (location) {
-        if (!location) {
-          var create = Q.nbind(Location.create, Location);
-          var newLocation = {
-            city: city,
-            country: country,
-            attractions: []
-          };
 
-          create(newLocation);
-
-          findUser({ username: username })
-            .then(function (user) {
-              if (!user) {
-                next(new Error('User does not exist'));
-              } else {
-                // double check model to see if we should query city and/or country
-                if (!user.locations[city]) {
-                  user.locations[city] = [];
-                  // initialize attractions array only if location not already added
-                }
-                res.status(200).send(newLocation);
-              }
-            });
-
+    findUser({ username: username })
+      .then(function (user) {
+        if (!user) {
+          next(new Error('User does not exist'));
         } else {
-          findUser({ username: username })
-            .then(function (user) {
-              if (!user) {
-                next(new Error('User does not exist'));
-              } else {
-                // double check model to see if we should query city and/or country
-                if (!user.locations[city]) {
-                  user.locations[city] = [];
-                  // initialize attractions array only if location not already added
-                }
-                res.status(200).send(location);
+
+          findCity({ city: city, country: country })
+            .then(function (location) {
+              if (!location) {
+                var create = Q.nbind(Location.create, Location);
+                var newLocation = {
+                  city: city,
+                  country: country,
+                  attractions: []
+                };
+                create(newLocation);
               }
+              // double check model to see if we should query city and/or country
+              if (!user.locations[city]) {
+                user.locations[city] = [];
+                // initialize attractions array only if location not already added
+              }
+              location = location ? newLocation : location;
+              res.status(200).send(location);
             });
         }
       })
