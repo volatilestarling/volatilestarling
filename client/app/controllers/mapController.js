@@ -4,6 +4,9 @@ angular.module('whereTo.map', [])
 
 /*---------------- INITIALIZE MAP ---------------*/
   var map = MapService.initMap();
+  var autocomplete = new google.maps.places.Autocomplete((document.getElementById('search')), {
+        types: ["geocode"]
+    }); 
 
 /*-------------- FETCH SAVED LOCATIONS -------------*/
     $scope.fetchMarkers = function() {
@@ -21,31 +24,17 @@ angular.module('whereTo.map', [])
      
     };
 
-    // $scope.pinMap = function(location) {
-    //   var geocoder = new google.maps.Geocoder();
-
-    //   geocoder.geocode({
-    //       address: location
-    //   }, function(results, status) {
-    //       if (status === google.maps.GeocoderStatus.OK) {
-
-    //           var marker = new google.maps.Marker({
-    //               map: map,
-    //               position: results[0].geometry.location,
-    //               icon: './assets/airplane.png'
-    //           });
-    //       } 
-    //   });
-    // };
-
 /*---------------- USER INPUT ---------------*/
     $scope.location;
 
     $scope.pinMap = function(location) {
+      var result = autocomplete.getPlace()
+
       //location passed from call in fetchMarkers or user input
-      location = location || $scope.map.location;
+      location = location || result.name;
       $scope.location = location;
-          //send to geocoder in mapservice
+
+      //send to geocoder in mapservice
       var geocoder = new google.maps.Geocoder();
 
       geocoder.geocode({
@@ -56,15 +45,17 @@ angular.module('whereTo.map', [])
             var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location,
+                animation: google.maps.Animation.DROP,
                 icon: './assets/airplane.png'
             });
-              //query to insert coordinates into database
-       
 
           } else {
               alert("Geocode was not successful for the following reason: " + status);
           }
       });
+
+      //add location to user in database
+      Location.addLocations(location)
 
       $scope.map.location = '';
 

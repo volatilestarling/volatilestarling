@@ -88,6 +88,8 @@ angular.module('where-to.services', [])
     map.setOptions({
         styles: styles
     });
+
+
     return map;
   }
   
