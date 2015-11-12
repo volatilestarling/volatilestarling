@@ -93,7 +93,6 @@ angular.module('where-to.services', [])
     return map;
   }
   
-
   return {
     initMap: initMap
   }
@@ -143,8 +142,6 @@ angular.module('where-to.services', [])
     return $http({
       method: 'GET',
       url: '/api/users'
-      //or request to /signedin?
-      //or set up root route on backend to handle this call?
     })
     .then(function (resp) {
       return resp.data;
