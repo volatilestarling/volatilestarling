@@ -1,5 +1,6 @@
 ### node etc ###
-client/lib
+client/lib/
+.DS_Store
 
 # Logs
 logs
