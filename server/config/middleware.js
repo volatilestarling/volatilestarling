@@ -22,6 +22,6 @@ module.exports = function (app, express) {
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
-  require('../users/userRoutes.js')(userRouter);
+  require('../routes/userRoutes.js')(userRouter);
   // require('../links/linkRoutes.js')(linkRouter);
 };

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var port  = process.env.PORT || 3000;
 var app = express();
 
-mongoose.connect('mongodb://localhost/whereto');
+mongoose.connect('mongodb://localhost/yugen');
 
 // require('server/routes/routes.js')(app);
 require('./config/middleware.js')(app, express);

@@ -1,4 +1,5 @@
 var Location = require('../models/locationModel');
+var User = require('../models/userModel');
 var Q = require('q');
 var cheerio = require('cheerio');
 
@@ -19,12 +20,19 @@ module.exports = {
           request(url, function(error, response, html){
             if(!error){
               var $ = cheerio.load(html);
-              var data;
+              var data = {
+                location: location,
+                info: {}
+              };
 
-              $('#content').filter(function() {
-                var content = $(this);
-                // select facts and add to data object
-              });
+              for (var i = 1; i <= 6; i++) {
+                var selector = '.quick_fact' + i;
+
+                $(selector).filter(function () {
+                  var content = $(this);
+                  data[content.children().first().text()] = content.children().last().text();
+                });
+              }
 
               res.status(200).send(location);
             }
@@ -36,30 +44,42 @@ module.exports = {
       });
   },
   addCity: function (req, res, next) {
-    // scrape data
-    // add coords and other stuff
+    var place = req.body.place;
     var city = req.body.city;
     var country = req.body.country;
-    var coords = req.body.coords;
-    // modify schema to store coordinates
+    var username = req.body.username;
     // need to fetch attractions from trip advisor api
 
     // need to add location to userSchema too
+    var findUser = Q.nbind(User.findOne, User);
     var findCity = Q.nbind(Location.findOne, Location);
-    findCity({ city: city, country: country })
-      .then(function (location) {
-        if (!location) {
-          var create = Q.nbind(Location.create, Location);
-          var newLocation = {
-            city: city,
-            country: country,
-            attractions: []
-          };
 
-          return create(newLocation);
+    findUser({ username: username })
+      .then(function (user) {
+        if (!user) {
+          next(new Error('User does not exist'));
         } else {
-          res.status(200).send(location);
-          // not actually an error, just don't have to add it
+
+          findCity({ city: city, country: country })
+            .then(function (location) {
+              var newLocation;
+              if (!location) {
+                var create = Q.nbind(Location.create, Location);
+                newLocation = {
+                  city: city,
+                  country: country,
+                  attractions: []
+                };
+                create(newLocation);
+              }
+              // double check model to see if we should query city and/or country
+              if (!user.locations[place]) {
+                user.locations[place] = [];
+                // initialize attractions array only if location not already added
+              }
+              location = location ? newLocation : location;
+              res.status(200).send(location);
+            });
         }
       })
       .fail(function (error) {
