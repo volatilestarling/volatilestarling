@@ -1,6 +1,6 @@
 angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', 'ui.router', 'firebase'])
 
-.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider' function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $stateProvider
     .state('login', {
@@ -20,6 +20,8 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
     });
 
     $urlRouterProvider.otherwise('/map');
+
+    $httpProvider.interceptors.push('AttachTokens');
 
 }])
 .factory('AttachTokens', function ($window) {
