@@ -1,4 +1,5 @@
 var Location = require('../models/locationModel');
+var User = require('../models/userModel');
 var Q = require('q');
 var cheerio = require('cheerio');
 
@@ -36,15 +37,14 @@ module.exports = {
       });
   },
   addCity: function (req, res, next) {
-    // scrape data
-    // add coords and other stuff
     var city = req.body.city;
     var country = req.body.country;
     var coords = req.body.coords;
-    // modify schema to store coordinates
+    var username = req.body.username;
     // need to fetch attractions from trip advisor api
 
     // need to add location to userSchema too
+    var findUser = Q.nbind(User.findOne, User);
     var findCity = Q.nbind(Location.findOne, Location);
     findCity({ city: city, country: country })
       .then(function (location) {
@@ -56,10 +56,36 @@ module.exports = {
             attractions: []
           };
 
-          return create(newLocation);
+          create(newLocation);
+
+          findUser({ username: username })
+            .then(function (user) {
+              if (!user) {
+                next(new Error('User does not exist'));
+              } else {
+                // double check model to see if we should query city and/or country
+                if (!user.locations[city]) {
+                  user.locations[city] = [];
+                  // initialize attractions array only if location not already added
+                }
+                res.status(200).send(newLocation);
+              }
+            });
+
         } else {
-          res.status(200).send(location);
-          // not actually an error, just don't have to add it
+          findUser({ username: username })
+            .then(function (user) {
+              if (!user) {
+                next(new Error('User does not exist'));
+              } else {
+                // double check model to see if we should query city and/or country
+                if (!user.locations[city]) {
+                  user.locations[city] = [];
+                  // initialize attractions array only if location not already added
+                }
+                res.status(200).send(location);
+              }
+            });
         }
       })
       .fail(function (error) {
