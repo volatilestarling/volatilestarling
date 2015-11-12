@@ -1,7 +1,6 @@
-angular.module('whereTo.auth', ['firebase'])
+angular.module('whereTo.auth', [])
 .controller('AuthController', ['$scope', '$state', 'Auth', function($scope, $state, Auth) {
 
-  //on authentication, redirect to map
   $scope.user = {};
 
   $scope.signin = function () {

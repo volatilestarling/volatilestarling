@@ -1,100 +1,15 @@
 angular.module('whereTo.map', [])
 
-.controller('MapController', function($scope, $state, $stateParams) {
-    var fbRef = new Firebase("URL HERE");
+.controller('MapController', function($scope, $state, MapService) {
 
-    //check if user is authorized, if not redirect to login
-    var authData = fbRef.getAuth();
+  MapService.initMap();
 
     $scope.fetchMarkers = function() {
-      fbRef.child('users').child(authData.uid).once('value', function(snapshot) {
-          var places = snapshot.val().whereToList;
-          console.log(places)
-
-          for (var key in places) {
-              console.log(places[key])
-              $scope.pinMap(places[key]);
-          }
-
-          setTimeout(function() {
-              for (var i = 0; i < leftOut.length; i++) {
-                  $scope.pinMap(leftOut[i]);
-              }
-          }, 30000)
-
-      }, function(errorObject) {
-          console.log("The read failed: " + errorObject.code);
-      });
+      //grab user.locations object
+      //iterate over object
+        //pass key into pinMap function
     }
 
-
-    //******************************************************//
-    //**************** MAP ******************//   
-    //******************************************************// 
-
-    var styles = [{
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#008285"
-        }, {
-            "saturation": 100
-        }, {
-            "lightness": -66
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#CAFCE4"
-        }, {
-            "saturation": 85
-        }, {
-            "lightness": 0
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "poi.park",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#61C273"
-        }, {
-            "saturation": 2
-        }, {
-            "lightness": -27
-        }, {
-            "visibility": "on"
-        }]
-    }, {
-        "featureType": "road",
-        "elementType": "all",
-        "stylers": [{
-            "hue": "#B0C4C7"
-        }, {
-            "saturation": -83
-        }, {
-            "lightness": 26
-        }, {
-            "visibility": "on"
-        }]
-    }]
-
-    var map = new google.maps.Map(document.getElementById('mapdisplay'), {
-        zoom: 2,
-        center: new google.maps.LatLng(0, 0)
-    });
-
-    map.setOptions({
-        styles: styles
-    });
-    //******************************************************//
-    //******************************************************//   
-    //******************************************************//    
-
-    var leftOut = [];
     $scope.pinMap = function(location) {
       var geocoder = new google.maps.Geocoder();
 
@@ -116,12 +31,6 @@ angular.module('whereTo.map', [])
       });
     }
 
-    if (authData === null) {
-        $state.go('login')
-    } else {
-        $scope.fetchMarkers();
-    }
-
     $scope.location;
 
     $scope.findLoc = function() {
@@ -139,8 +48,8 @@ angular.module('whereTo.map', [])
                   position: results[0].geometry.location,
                   icon: './assets/airplane.png'
               });
-              //function to insert coordinates into database
-              fbRef.child('users').child(authData.uid).child('whereToList').push($scope.location)
+              //query to insert coordinates into database
+       
 
           } else {
               alert("Geocode was not successful for the following reason: " + status);
