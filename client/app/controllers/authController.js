@@ -19,7 +19,7 @@ angular.module('whereTo.auth', ['firebase'])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.whereto', token);
-        $location.path('/links');
+        $state.go('map');
       })
       .catch(function (error) {
         console.error(error);
