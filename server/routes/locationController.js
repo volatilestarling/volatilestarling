@@ -55,9 +55,10 @@ module.exports = {
 
           findCity({ city: city, country: country })
             .then(function (location) {
+              var newLocation;
               if (!location) {
                 var create = Q.nbind(Location.create, Location);
-                var newLocation = {
+                newLocation = {
                   city: city,
                   country: country,
                   attractions: []
