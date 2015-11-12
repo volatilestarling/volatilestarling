@@ -20,12 +20,19 @@ module.exports = {
           request(url, function(error, response, html){
             if(!error){
               var $ = cheerio.load(html);
-              var data;
+              var data = {
+                location: location,
+                info: {}
+              };
 
-              $('#content').filter(function() {
-                var content = $(this);
-                // select facts and add to data object
-              });
+              for (var i = 1; i <= 6; i++) {
+                var selector = '.quick_fact' + i;
+
+                $(selector).filter(function () {
+                  var content = $(this);
+                  data[content.children().first().text()] = content.children().last().text();
+                });
+              }
 
               res.status(200).send(location);
             }
@@ -37,9 +44,9 @@ module.exports = {
       });
   },
   addCity: function (req, res, next) {
+    var place = req.body.place;
     var city = req.body.city;
     var country = req.body.country;
-    var coords = req.body.coords;
     var username = req.body.username;
     // need to fetch attractions from trip advisor api
 
@@ -66,8 +73,8 @@ module.exports = {
                 create(newLocation);
               }
               // double check model to see if we should query city and/or country
-              if (!user.locations[city]) {
-                user.locations[city] = [];
+              if (!user.locations[place]) {
+                user.locations[place] = [];
                 // initialize attractions array only if location not already added
               }
               location = location ? newLocation : location;
