@@ -1,5 +1,5 @@
-client/lib/
 .DS_Store
+db/data
 
 node_modules/
 client/lib
