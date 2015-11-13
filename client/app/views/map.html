@@ -4,8 +4,8 @@
         <button ng-click="logout()" class="btn btn-default navbar-right navbar-btn ">Logout</button>
     </div>
 </nav>
-<button ng-click="showTab(1)" class="btn-lg btn btn-default" type="button">Show Map</button>
-<button ng-click="showTab(2)" class="btn-lg btn btn-default" type="button">Show Places</button>
+<button ng-click="tab = 1" class="btn-lg btn btn-default" type="button">Show Map</button>
+<button ng-click="tab = 2" class="btn-lg btn btn-default" type="button">Show Places</button>
 <div ng-controller="MapController">
     <div id="mapdisplay" ng-show='tab === 1'></div>
     <br>
