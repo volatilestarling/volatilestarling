@@ -37,10 +37,10 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
   };
   return attach;
 })
-.run(function ($rootScope, $location, Auth) {
-  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/signin');
+.run(function ($rootScope, $state, $location, Auth) {
+  $rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState, fromParams) {
+    if (toState.name !== 'signup' && toState.name !== 'login' && !Auth.isAuth()) {
+      $location.path('/login');
     }
   });
 });
