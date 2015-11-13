@@ -7,6 +7,7 @@ angular.module('whereTo.auth', [])
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.whereto', token);
+        $rootScope.user = $scope.user.email
         $state.go('map');
       })
       .catch(function (error) {
@@ -18,6 +19,7 @@ angular.module('whereTo.auth', [])
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.whereto', token);
+        $rootScope.user = $scope.user.email
         $state.go('map');
       })
       .catch(function (error) {

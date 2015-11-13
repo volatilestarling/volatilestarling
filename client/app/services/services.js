@@ -148,11 +148,11 @@ angular.module('where-to.services', [])
     });
   };
 
-  var addLocations = function (location) {
+  var addLocations = function (data) {
     return $http({
       method: 'POST',
       url: '/api/users',
-      data: location
+      data: data
     })
     .then(function (resp) {
       return resp.data;
@@ -164,3 +164,4 @@ angular.module('where-to.services', [])
     addLocations: addLocations
   };    
 })
+//Will need to add services to handle itineraries
