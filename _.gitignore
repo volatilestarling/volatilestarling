@@ -2,6 +2,7 @@
 client/lib/
 .DS_Store
 
+
 # Logs
 logs
 *.log

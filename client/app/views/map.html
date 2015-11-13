@@ -4,14 +4,17 @@
         <button ng-click="logout()" class="btn btn-default navbar-right navbar-btn ">Logout</button>
     </div>
 </nav>
-<button ng-click="tab = 1" class="btn-lg btn btn-default" type="button">Show Map</button>
-<button ng-click="tab = 2" class="btn-lg btn btn-default" type="button">Show Places</button>
 <div ng-controller="MapController">
+  <br><br>
+    <div class="ui two item menu">
+      <a class="item" ng-click='tab = 1'>Map</a>
+      <a class="item" ng-click='tab = 2'>Places</a>
+    </div>
     <div id="mapdisplay" ng-show='tab === 1'></div>
     <br>
     <div class="col-md-4 col-md-offset-4">
         <form name="locationForm" ng-submit="pinMap()">
-            <div class="input-group">
+            <div class="input-group" ng-show='tab === 1'>
                 <input id="search" type="text" class="form-control input-lg" placeholder="add a destination" ng-model="map.location">
                 <span class="input-group-btn">
           <button ng-click="pinMap()" class="btn-lg btn btn-default" type="button">Mark the Map!</button>
@@ -19,10 +22,14 @@
             </div>
         </form>
     </div>
-   <!--  populate on sign in -->
-    <table class="table" ng-show='tab === 2'>
-    <tr ng-repeat="place in locations">
-        <td title="'Name'" ng-click="getLocData()"> {{ place }} </td>
+    <table class="ui very basic collapsing celled table table-center" ng-show='tab === 2'>
+  <thead>
+    <tr>
+    <th>Places</th>
     </tr>
-</table>
+  </thead>
+  <tbody>
+    <tr ng-repeat="location in locations">
+      <td title="'Name'" ng-click="getLocData()"> {{ location }} </td>
+    </tr>
 </div>
