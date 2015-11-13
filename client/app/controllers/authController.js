@@ -25,6 +25,8 @@ angular.module('whereTo.auth', [])
       });
   };  
 
-  //signout?
+  $scope.logout = function () {
+    Auth.signout();
+  }
 
 }])
