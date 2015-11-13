@@ -64,7 +64,7 @@ module.exports = {
 
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated
-    // grab the token in the header is any
+    // grab the token in the header if any
     // then decode the token, which we end up being the user object
     // check to see if that user exists in the database
     var token = req.headers['x-access-token'];
@@ -85,5 +85,41 @@ module.exports = {
           next(error);
         });
     }
+  },
+
+  addUserLocation: function (req, res, next) {
+    var user = req.body.user;
+    var location = req.body.location;
+
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: user})
+      .then(function(foundUser) {
+        if(foundUser) {
+          //initialize to an empty array to hold itinerary
+          foundUser.locations[location] = [];
+          console.log('added location');
+          res.status(201);
+        } else {
+          console.error('Could not find user');
+          res.status(404);
+        }
+      })
+
+  },
+
+  getUserLocation: function (req, res, next) {
+    var user = req.body.user;
+
+    var findUser = Q.nbind(User.findOne, User);
+    findUser({username: user})
+      .then(function(foundUser) {
+        if(foundUser) {
+          //send back user's locations object
+          res.status(200).send(foundUser.locations);
+        } else {
+          console.error('Could not find user');
+          res.status(404);
+        }
+      })
   }
 };
