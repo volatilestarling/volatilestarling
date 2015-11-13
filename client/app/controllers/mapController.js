@@ -28,8 +28,19 @@ angular.module('whereTo.map', [])
     location = location || result.name;
     $scope.location = location;
 
+
     //send to geocoder in mapservice
     var geocoder = new google.maps.Geocoder();
+
+/*---------------- USER INPUT ---------------*/
+    $scope.location;
+    //reference to user places list
+    $scope.locations;
+    $scope.tab = 1;
+    $scope.showTab = function(num) {
+      $scope.tab = num;
+    }
+
 
     geocoder.geocode({
         address: $scope.location
