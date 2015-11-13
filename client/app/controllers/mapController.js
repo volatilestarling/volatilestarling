@@ -9,9 +9,12 @@ angular.module('whereTo.map', [])
     }); 
 
 /*-------------- FETCH SAVED LOCATIONS -------------*/
+  $scope.locations;
+
   $scope.fetchMarkers = function() {
     Location.getLocations()
       .then(function(locations) {
+        $scope.locations = locations;
         for(var place in locations) {
           $scope.pinMap(place);
         }
@@ -35,7 +38,6 @@ angular.module('whereTo.map', [])
 /*---------------- USER INPUT ---------------*/
     $scope.location;
     //reference to user places list
-    $scope.locations;
     $scope.tab = 1;
     $scope.showTab = function(num) {
       $scope.tab = num;
