@@ -27,7 +27,9 @@
     "mongodb-uri": "^0.9.7",
     "mongoose": "^4.2.5",
     "morgan": "^1.6.1",
+
     "node-inspector": "^0.12.3",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "request": "^2.65.0"
   }
 }

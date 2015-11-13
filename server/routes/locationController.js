@@ -2,6 +2,7 @@ var Location = require('../models/locationModel');
 var User = require('../models/userModel');
 var Q = require('q');
 var cheerio = require('cheerio');
+var request = require('request');
 
 module.exports = {
   retrieveData: function (req, res, next) {
@@ -70,12 +71,28 @@ module.exports = {
                   country: country,
                   attractions: []
                 };
-                create(newLocation);
-              }
+                
+                var fetchCB = function(err, sights) {
+                  //array of attractions (objects)
+                  var toDoList = sights.results.Sights;
+
+                  toDoList.forEach(function(attraction) {
+                    newLocation.attractions.push(attraction);
+                  });
+
+                  create(newLocation);
+                };
+
+                if(newLocation.city === "") {
+                  fetchAttractions(newLocation.country, fetchCB);
+                } else {
+                  fetchAttractions(newLocation.country, fetchCB, newLocation.city);
+                }
+        
               // double check model to see if we should query city and/or country
               if (!user.locations[place]) {
-                user.locations[place] = [];
                 // initialize attractions array only if location not already added
+                user.locations[place] = [];
               }
               location = location ? newLocation : location;
               res.status(200).send(location);
@@ -85,5 +102,22 @@ module.exports = {
       .fail(function (error) {
         next(error);
       });
+  },
+
+  fetchAttractions: function (country, callback, city) {
+    var url;
+
+    if(city === undefined) {
+      url = "http://www.kimonolabs.com/api/ondemand/6fndw1y6?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath1=" + country;
+    } else {
+      url = "https://www.kimonolabs.com/api/ondemand/eg6pzbee?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath1=" + country + "&kimpath2=" + city;
+    }
+
+    request(url, function(err, response, body) {
+      if(err) {
+        console.error(err);
+      }
+      callback(body);
+    })
   }
 };
