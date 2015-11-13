@@ -1,17 +1,21 @@
 angular.module('whereTo.map', [])
 
 .controller('MapController', function($scope, $state, MapService, Location) {
+  $scope.location = '';
+  $scope.locations = [];
+  $scope.tab = 1;
 
 /*---------------- INITIALIZE MAP ---------------*/
   var map = MapService.initMap();
   var autocomplete = new google.maps.places.Autocomplete((document.getElementById('search')), {
         types: ["geocode"]
-    }); 
+    });
 
 /*-------------- FETCH SAVED LOCATIONS -------------*/
   $scope.fetchMarkers = function() {
     Location.getLocations()
       .then(function(locations) {
+        $scope.locations = locations;
         for(var place in locations) {
           $scope.pinMap(place);
         }
@@ -19,10 +23,8 @@ angular.module('whereTo.map', [])
   };
 
 /*------------------- USER INPUT ------------------*/
-  $scope.location;
-
   $scope.pinMap = function(location) {
-    var result = autocomplete.getPlace()
+    var result = autocomplete.getPlace();
 
     //location passed from call in fetchMarkers or user input
     location = location || result.name;
@@ -33,14 +35,7 @@ angular.module('whereTo.map', [])
     var geocoder = new google.maps.Geocoder();
 
 /*---------------- USER INPUT ---------------*/
-    $scope.location;
     //reference to user places list
-    $scope.locations;
-    $scope.tab = 1;
-    $scope.showTab = function(num) {
-      $scope.tab = num;
-    }
-
 
     geocoder.geocode({
         address: $scope.location
@@ -65,7 +60,6 @@ angular.module('whereTo.map', [])
     }
 
     $scope.map.location = '';
-
-  }
+  };
 
 });
