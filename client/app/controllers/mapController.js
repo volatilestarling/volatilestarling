@@ -12,6 +12,8 @@ angular.module('whereTo.map', [])
     });
 
 /*-------------- FETCH SAVED LOCATIONS -------------*/
+  $scope.locations;
+
   $scope.fetchMarkers = function() {
     Location.getLocations()
       .then(function(locations) {
@@ -36,6 +38,11 @@ angular.module('whereTo.map', [])
 
 /*---------------- USER INPUT ---------------*/
     //reference to user places list
+
+    $scope.tab = 1;
+    $scope.showTab = function(num) {
+      $scope.tab = num;
+    }
 
     geocoder.geocode({
         address: $scope.location
