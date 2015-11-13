@@ -4,8 +4,10 @@
         <button ng-click="logout()" class="btn btn-default navbar-right navbar-btn ">Logout</button>
     </div>
 </nav>
+<button ng-click="showTab(1)" class="btn-lg btn btn-default" type="button">Show Map</button>
+<button ng-click="showTab(2)" class="btn-lg btn btn-default" type="button">Show Places</button>
 <div ng-controller="MapController">
-    <div id="mapdisplay"></div>
+    <div id="mapdisplay" ng-show='tab === 1'></div>
     <br>
     <div class="col-md-4 col-md-offset-4">
         <form name="locationForm" ng-submit="pinMap()">
@@ -17,4 +19,10 @@
             </div>
         </form>
     </div>
+   <!--  populate on sign in -->
+    <table class="table" ng-show='tab === 2'>
+    <tr ng-repeat="place in locations">
+        <td title="'Name'" ng-click="getLocData()"> {{ place }} </td>
+    </tr>
+</table>
 </div>
