@@ -2,6 +2,8 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
+  $urlRouterProvider.otherwise('/map');
+
   $stateProvider
     .state('login', {
       url: '/login',
@@ -18,8 +20,6 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
       templateUrl: 'app/views/map.html',
       controller: 'MapController'
     });
-
-    $urlRouterProvider.otherwise('/map');
 
     $httpProvider.interceptors.push('AttachTokens');
 
