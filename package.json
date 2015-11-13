@@ -19,6 +19,7 @@
   "homepage": "https://github.com/volatilestarling/volatilestarling#readme",
   "dependencies": {
     "better-console": "^0.2.4",
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.0.5",
     "body-parser": "^1.14.1",
     "del": "^2.0.2",
