@@ -1,28 +1,31 @@
 {
   "name": "where-to",
   "version": "1.0.0",
-  "description": "MVP project for Hack Reactor",
+  "description": "Greenfield for Hack Reactor",
   "main": "server.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thekamahele/where-to.git"
+    "url": "git+https://github.com/volatilestarling/volatilestarling.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thekamahele/where-to/issues"
+    "url": "https://github.com/volatilestarling/volatilestarling/issues"
   },
-  "homepage": "https://github.com/thekamahele/where-to#readme",
+  "homepage": "https://github.com/volatilestarling/volatilestarling#readme",
   "dependencies": {
     "bluebird": "^3.0.5",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "grunt": "^0.4.5",
+    "jwt-simple": "^0.3.1",
     "method-override": "^2.3.5",
-    "mongoose": "^4.2.4",
-    "morgan": "^1.6.1"
+    "mongoose": "^4.2.5",
+    "morgan": "^1.6.1",
+    "q": "^1.4.1"
   }
 }
