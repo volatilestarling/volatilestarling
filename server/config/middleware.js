@@ -5,7 +5,7 @@ var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
   var userRouter = express.Router();
-  // var linkRouter = express.Router();
+  var locationRouter = express.Router();
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
@@ -18,10 +18,10 @@ module.exports = function (app, express) {
 
   app.use('/api/users', userRouter);
 
-  // app.use('/api/links', linkRouter); // user link router for link request
+  app.use('/api/location', locationRouter); // user link router for link request
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
   require('../routes/userRoutes.js')(userRouter);
-  // require('../links/linkRoutes.js')(linkRouter);
+  require('../routes/locationRoutes.js')(locationRouter);
 };

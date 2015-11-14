@@ -14,15 +14,20 @@ var userSchema = new Schema({
   password: {
     type: String
   },
+  // locations: {
+  //    example
+  //     locations: {
+  //       bangkok: [...],
+  //       sydney: [...],
+  //       etc: [...]
+  //     }
+    
+  //   type: Schema.Types.Mixed
+  //   // type: Schema.Types.Mixed
+  // }
   locations: {
-    /* example
-      locations: {
-        bangkok: [...],
-        sydney: [...],
-        etc: [...]
-      }
-    */
-    type: Schema.Types.Mixed
+    type: Schema.Types.Mixed,
+    default: {}
   }
 });
 

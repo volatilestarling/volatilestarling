@@ -60,33 +60,34 @@ module.exports = {
         if (!user) {
           next(new Error('User does not exist'));
         } else {
-
           findCity({ city: city, country: country })
             .then(function (location) {
+
               var newLocation;
               if (!location) {
                 var create = Q.nbind(Location.create, Location);
+
                 newLocation = {
                   city: city,
                   country: country,
                   attractions: []
                 };
-                
-                var fetchCB = function(err, sights) {
+
+                var fetchCB = function(err, response, body) {
                   //array of attractions (objects)
-                  var toDoList = sights.results.Sights;
-
-                  toDoList.forEach(function(attraction) {
-                    newLocation.attractions.push(attraction);
-                  });
-
+                  var toDoList = JSON.parse(body);
+    
+                  for(var place in toDoList) { 
+                    newLocation.attractions.push(toDoList[place])
+                  }
                   create(newLocation);
                 };
 
+
                 if(newLocation.city === "") {
-                  fetchAttractions(newLocation.country, fetchCB);
+                  module.exports.fetchAttractions(newLocation.country, fetchCB);
                 } else {
-                  fetchAttractions(newLocation.country, fetchCB, newLocation.city);
+                  module.exports.fetchAttractions(newLocation.country, fetchCB, newLocation.city);
                 }
         
               // double check model to see if we should query city and/or country
@@ -96,7 +97,10 @@ module.exports = {
               }
               location = location ? newLocation : location;
               res.status(200).send(location);
-            });
+            } else {
+              console.log('location already exists');
+            }
+          });
         }
       })
       .fail(function (error) {
@@ -105,19 +109,32 @@ module.exports = {
   },
 
   fetchAttractions: function (country, callback, city) {
+    //consider white space cases
+    country = country.replace(/\s/g, '-');
     var url;
 
     if(city === undefined) {
-      url = "http://www.kimonolabs.com/api/ondemand/6fndw1y6?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath1=" + country;
+      url = "http://www.kimonolabs.com/api/ondemand/6fndw1y6?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath1=" + country + "&kimmodify=1";
     } else {
-      url = "https://www.kimonolabs.com/api/ondemand/eg6pzbee?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath1=" + country + "&kimpath2=" + city;
+      city = city.replace(/\s/g, '-');
+      url = "https://www.kimonolabs.com/api/ondemand/eg6pzbee?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath1=" + country + "&kimpath2=" + city + "&kimmodify=1";
     }
 
     request(url, function(err, response, body) {
       if(err) {
         console.error(err);
+      } else {
+        /*
+        body is obj with following structure:
+        "0": {
+            "Attraction": "National Palace Museum",
+            "Description": "Home to the world's largest and arguably finest collection of Chinese art, this vast collection covers treasures in painting, calligraphy, statuary, bronzes, laquerware, ceramics, jade and religious objects...",
+            "City": "Taipei",
+            "Type": "Museums & Galleries"
+          }
+        */
+        callback(err, response, body);
       }
-      callback(body);
     })
   }
 };

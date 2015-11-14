@@ -88,16 +88,20 @@ module.exports = {
   },
 
   addUserLocation: function (req, res, next) {
+    console.log(req.body)
     var user = req.body.user;
     var location = req.body.location;
-
+    console.log('this is user', user)
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: user})
       .then(function(foundUser) {
         if(foundUser) {
+          console.log('hello')
+          console.log(foundUser);
           //initialize to an empty array to hold itinerary
           foundUser.locations[location] = [];
           console.log('added location');
+          console.log(foundUser.locations);
           res.status(201);
         } else {
           console.error('Could not find user');
