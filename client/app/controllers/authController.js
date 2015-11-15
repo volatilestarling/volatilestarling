@@ -27,6 +27,7 @@ angular.module('whereTo.auth', [])
 
   $scope.logout = function () {
     Auth.signout();
+    $rootScope.user = null;
   }
 
 }])
