@@ -1,4 +1,4 @@
-angular.module('', [])
+angular.module('where-to.attr', [])
   .controller('AttractionsCtrl', ['$scope', 'Detail', function($scope, Detail) {
     
     $scope.attractionsList = Detail.attractions;
