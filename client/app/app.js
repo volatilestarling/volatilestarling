@@ -19,7 +19,28 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
       url: '/map',
       templateUrl: 'app/views/map.html',
       controller: 'MapController'
+    })
+    .state('detail', {
+      url: '/detail',
+      templateUrl: 'app/views/detail.html',
+      controller: 'DetailController'
+    })
+    .state('detail.itinerary', {
+      url: '/itinerary',
+      templateUrl: 'app/views/detail.itinerary.html',
+      controller: 'itineraryController'
+    })
+    .state('detail.info', {
+      url: '/info',
+      templateUrl: 'app/views/detail.info.html',
+      controller: 'itineraryController'
+    })
+    .state('detail.attractions', {
+      url: '/attractions',
+      templateUrl: 'app/views/detail.attractions.html',
+      controller: 'AttractionsCtrl'
     });
+
 
     $httpProvider.interceptors.push('AttachTokens');
 
