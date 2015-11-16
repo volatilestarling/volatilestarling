@@ -13,8 +13,8 @@ var options = {
 var mongodbUri = 'mongodb://heroku_q2tbs7nz:vip6tj89t803bf8vnala6oa9g8@ds053964.mongolab.com:53964/heroku_q2tbs7nz';
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
-// mongoose.connect(mongodbUri, options);
-mongoose.connect("mongodb://localhost/volatile", options);
+mongoose.connect(mongodbUri, options);
+// mongoose.connect("mongodb://localhost/volatile", options);
 
 // require('server/routes/routes.js')(app);
 require('./config/middleware.js')(app, express);
