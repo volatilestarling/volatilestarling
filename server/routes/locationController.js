@@ -48,12 +48,15 @@ module.exports = {
     var place = req.body.place;
     var city = req.body.city;
     var country = req.body.country;
-    var username = req.body.username;
+    var username = req.body.user;
     // need to fetch attractions from trip advisor api
 
     // need to add location to userSchema too
     var findUser = Q.nbind(User.findOne, User);
     var findCity = Q.nbind(Location.findOne, Location);
+
+    console.log('adding city now');
+    console.log(username, place);
 
     findUser({ username: username })
       .then(function (user) {

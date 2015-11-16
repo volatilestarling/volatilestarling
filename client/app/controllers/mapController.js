@@ -62,6 +62,8 @@ angular.module('whereTo.map', [])
     });
 
     //if it is a new location, add it to the user's list
+    console.log('$rootScope.user =', $rootScope.user);
+    console.log('location =', location);
     if(result.name !== undefined) {
       var data = {
         location: location,
