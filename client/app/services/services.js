@@ -164,7 +164,11 @@ angular.module('where-to.services', [])
     addLocations: addLocations
   };
 })
-.factory('Itinerary', function($http) {
+.factory('Detail', function($http) {
+  var info;
+  var attractions;
+  var itinerary;
+
   var addToDo = function(todo) {
     return $http({
       method: 'POST',
@@ -186,4 +190,26 @@ angular.module('where-to.services', [])
       return resp.data;
     });
   };
+
+  var locationDetails = function(data) {
+    return $http({
+      method: 'GET',
+      url: '/api/location',
+      data: data //user, city, country
+    })
+    .then(function (resp) {
+      info = resp.data.info;
+      attractions = resp.data.attractions;
+      return resp.data;
+    });
+  };
+
+  return {
+    addToDo: addToDo,
+    getToDo: getToDo,
+    locationDetails: locationDetails,
+    info: info,
+    attractions: attractions,
+    itinerary: itinerary
+  }
 });

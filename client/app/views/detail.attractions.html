@@ -1,17 +1,18 @@
 <div ng-controller="AttractionsCtrl">
-<div ng-repeat=""></div> 
+<div ng-repeat="attraction in attractionsList"></div> 
   <!-- INDIVIDUAL CARD VIEW -->
   <div class="card">
     <div class="image">
       <img src="../assets/worldmap.png">
     </div>
     <div class="content">
-      <div class="header">{{ title }}</div>
+      <div class="header">{{ attraction.title }}</div>
       <div class="meta">
-        <span>{{ type }}</span>
+        <a>{{ attraction.type }}</a>
+        <a> {{ attraction.city }}</a>
       </div>
       <div class="description">
-        {{ description }}
+        {{ attraction.description }}
       </div>
     </div>
 </div>
