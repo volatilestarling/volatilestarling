@@ -2,7 +2,7 @@ angular.module('whereTo.map', [])
 
 .controller('MapController', function($scope, $state, MapService, Location, $rootScope) {
   $scope.location = '';
-  $scope.locations = [];
+  $scope.locations;
   $scope.tab = 1;
 
 /*---------------- INITIALIZE MAP ---------------*/
@@ -12,7 +12,6 @@ angular.module('whereTo.map', [])
     });
 
 /*-------------- FETCH SAVED LOCATIONS -------------*/
-  $scope.locations;
 
   $scope.fetchMarkers = function() {
     Location.getLocations()
