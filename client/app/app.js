@@ -27,7 +27,7 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
 .factory('AttachTokens', function ($window) {
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.shortly');
+      var jwt = $window.localStorage.getItem('com.whereto');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }

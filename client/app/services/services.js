@@ -77,7 +77,7 @@ angular.module('where-to.services', [])
         "stylers": [{
             "color": "#3f518c"
         }]
-    }]
+    }];
 
   function initMap() {
     var map = new google.maps.Map(document.getElementById('mapdisplay'), {
@@ -95,7 +95,7 @@ angular.module('where-to.services', [])
   
   return {
     initMap: initMap
-  }
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   var signin = function (user) {
@@ -151,7 +151,7 @@ angular.module('where-to.services', [])
   var addLocations = function (data) {
     return $http({
       method: 'POST',
-      url: '/api/users',
+      url: '/api/location',
       data: data
     })
     .then(function (resp) {
@@ -162,7 +162,7 @@ angular.module('where-to.services', [])
   return {
     getLocations: getLocations,
     addLocations: addLocations
-  };    
+  };
 })
 .factory('Itinerary', function($http) {
   var addToDo = function(todo) {
@@ -185,6 +185,5 @@ angular.module('where-to.services', [])
     .then(function (resp) {
       return resp.data;
     });
-  }
-})
-
+  };
+});
