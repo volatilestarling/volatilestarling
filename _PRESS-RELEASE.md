@@ -19,11 +19,17 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
+  Where-To  
+
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
+  Where-To is a travel planner that allows you to organize, plan and visualize your future travel plans.
+
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+
+  Life is too short to stay in one place. Where-to allows you to keep track of all the places you want to go and gives you necessary info on the place you are going including passport and currency limits. With suggestions of places to visit and an itinerary that gives you the ability to track your plans Where-To makes travel planning easy. Where-to keeps all your travel plans in one place consolidating your travel bucket list.  
 
 ## Problem ##
   > Describe the problem your product solves.
