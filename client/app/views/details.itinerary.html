@@ -3,13 +3,13 @@
 </div>
 <div class="ui bottom attached tab segment" data-tab="third">
   <h1>Intinerary</h1>
-    <form name='plans' ng-submit="addEvent()">
-      <input class="text" name="username" placeholder="Add event" ng-model="event.info">
+    <form name='plans' ng-submit="addEvent(event)">
+      <input class="text" name="event" placeholder="Add event" ng-model="event.info">
       <input type="submit" value="addEvent">
     </form>
-      <div class="panel panel-default" ng-repeat="plan in plans">
+      <div class="panel panel-default" ng-repeat="(key, value) in events">
         <div "panel-body">
-          <a>{{ location }}</a>
+          <a>{{ key }}</a><span class="delete"><button ng-click="delete()">Delete</button></span>
         </div>
       </div>  
 </div>
