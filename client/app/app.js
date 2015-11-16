@@ -1,4 +1,4 @@
-angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', 'where-to.attr', 'ui.router'])
+angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', 'where-to.attr', 'where-to.detail', 'whereTo.itinerary', 'ui.router'])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
@@ -38,7 +38,7 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
     .state('detail.attractions', {
       url: '/attractions',
       templateUrl: 'app/views/detail.attractions.html',
-      controller: 'AttractionsCtrl'
+      controller: 'AttractionsController'
     });
 
 

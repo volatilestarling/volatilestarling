@@ -30,7 +30,9 @@
       </thead>
     <tbody>
       <tr ng-repeat="location in locations">
-        <td title="'Name'" ng-click="getLocData()"> {{ location }} </td>
+        <!-- call locationsdetails in map controller -->
+        <td title="'Name'" ng-click="getLocData()"> {{ 
+        location }} </td>
       </tr>
     </tbody>
   </table>

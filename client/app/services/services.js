@@ -138,10 +138,11 @@ angular.module('where-to.services', [])
   };
 })
 .factory('Location', function($http) {
-  var getLocations = function () {
+  var getLocations = function (user) {
     return $http({
       method: 'GET',
-      url: '/api/users'
+      url: '/api/users',
+      data: user
     })
     .then(function (resp) {
       return resp.data;
