@@ -63,7 +63,12 @@ angular.module('whereTo.map', [])
 
     //if it is a new location, add it to the user's list
     if(result.name !== undefined) {
-      Location.addLocations(location);
+      var data = {
+        location: location,
+        user: $rootScope.user
+      }
+      
+      Location.addLocations(data);
     }
 
     $scope.map.location = '';
