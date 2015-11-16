@@ -19,7 +19,7 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
-  Where-To  
+  Yugen  
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
@@ -33,6 +33,8 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Problem ##
   > Describe the problem your product solves.
+
+  Keeping track of the places you want to go and what you want to see requires a great deal of planning and organization. Yugen 
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
