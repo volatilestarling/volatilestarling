@@ -1,6 +1,6 @@
 angular.module('whereTo.map', [])
 
-.controller('MapController', function($scope, $state, MapService, Location) {
+.controller('MapController', function($scope, $state, MapService, Location, $rootScope) {
   $scope.location = '';
   $scope.locations = [];
   $scope.tab = 1;
@@ -66,7 +66,7 @@ angular.module('whereTo.map', [])
       var data = {
         location: location,
         user: $rootScope.user
-      }
+      };
       
       Location.addLocations(data);
     }
