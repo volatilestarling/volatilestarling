@@ -1,0 +1,24 @@
+
+<div class="ui top attached tabular menu">
+  <a class="item" data-tab="first">Info</a>
+  <a class="item active" data-tab="second">Attractions</a>
+  <a class="item" data-tab="third">Itinerary</a>
+</div>
+<div class="ui bottom attached tab segment" data-tab="first">
+  <h1>Info</h1>
+</div>
+<div class="ui bottom attached tab segment active" data-tab="second">
+  <h1>Attractions</h1>
+</div>
+<div class="ui bottom attached tab segment" data-tab="third">
+  <h1>Intinerary</h1>
+    <form name='plans' ng-submit="addEvent()">
+      <input class="text" name="username" placeholder="Username" ng-model="event.info">
+      <input type="submit" value="addEvent">
+    </form>
+      <div class="panel panel-default" ng-repeat="plan in plans">
+        <div "panel-body">
+          <a>{{ location }}</a>
+        </div>
+      </div>  
+</div>

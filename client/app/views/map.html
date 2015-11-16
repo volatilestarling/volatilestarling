@@ -23,13 +23,15 @@
         </form>
     </div>
     <table class="ui very basic collapsing celled table table-center" ng-show='tab === 2'>
-  <thead>
-    <tr>
-    <th>Places</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="location in locations">
-      <td title="'Name'" ng-click="getLocData()"> {{ location }} </td>
-    </tr>
+      <thead>
+      <tr>
+        <th>Places</th>
+      </tr>
+      </thead>
+    <tbody>
+      <tr ng-repeat="location in locations">
+        <td title="'Name'" ng-click="getLocData()"> {{ location }} </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
