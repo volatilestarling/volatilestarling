@@ -164,4 +164,27 @@ angular.module('where-to.services', [])
     addLocations: addLocations
   };    
 })
-//Will need to add services to handle itineraries
+.factory('Itinerary', function($http) {
+  var addToDo = function(todo) {
+    return $http({
+      method: 'POST',
+      url: '/api/users',
+      data: todo //location and todo
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+
+  //may not need this
+  var getToDo = function(location) {
+    return $http({
+      method: 'GET',
+      url: '/api/users'
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  }
+})
+
