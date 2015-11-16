@@ -33,7 +33,7 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
     .state('detail.info', {
       url: '/info',
       templateUrl: 'app/views/detail.info.html',
-      controller: 'itineraryController'
+      controller: 'InfoController'
     })
     .state('detail.attractions', {
       url: '/attractions',
