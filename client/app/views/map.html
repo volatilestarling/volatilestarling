@@ -31,8 +31,7 @@
     <tbody>
       <tr ng-repeat="location in locations">
         <!-- call locationsdetails in map controller -->
-        <td title="'Name'" ng-click="getLocData()"> {{ 
-        location }} </td>
+        <td title="Name" ng-click="getLocData()"> <a href="#/detail/info">{{ location }}</a> </td>
       </tr>
     </tbody>
   </table>
