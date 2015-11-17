@@ -4,9 +4,9 @@ angular.module('whereTo.itinerary', [])
   $scope.events;
 
   $scope.addEvent = function (data) {
-    Itinerary.addToDo(data);
+    Itinerary.addToDo(data)
       .then(function (events) {
         $scope.events = events;
       })
   };
-}
+}]);
