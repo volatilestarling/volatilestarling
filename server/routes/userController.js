@@ -112,8 +112,9 @@ module.exports = {
   },
 
   getUserLocation: function (req, res, next) {
-    var user = req.body.user;
-
+    var user = req.params.user;
+    console.log(user);
+    console.log(req.body);
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: user})
       .then(function(foundUser) {

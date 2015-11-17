@@ -1,0 +1,15 @@
+<div class="ui bottom attached tab segment active" data-tab="second">
+  <h1>Attractions</h1>
+</div>
+<div class="ui bottom attached tab segment" data-tab="third">
+  <h1>Intinerary</h1>
+    <form name='plans' ng-submit="addEvent(event)">
+      <input class="text" name="event" placeholder="Add event" ng-model="event.info">
+      <input type="submit" value="addEvent">
+    </form>
+      <div class="panel panel-default" ng-repeat="(key, value) in events">
+        <div "panel-body">
+          <a>{{ key }}</a><span class="delete"><button ng-click="delete()">Delete</button></span>
+        </div>
+      </div>  
+</div>

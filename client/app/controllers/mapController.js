@@ -2,7 +2,7 @@ angular.module('whereTo.map', [])
 
 .controller('MapController', function($scope, $state, MapService, Location, $rootScope) {
   $scope.location = '';
-  $scope.locations = [];
+  $scope.locations;
   $scope.tab = 1;
 
 /*---------------- INITIALIZE MAP ---------------*/
@@ -12,10 +12,11 @@ angular.module('whereTo.map', [])
     });
 
 /*-------------- FETCH SAVED LOCATIONS -------------*/
-  $scope.locations;
 
   $scope.fetchMarkers = function() {
-    Location.getLocations()
+    console.log($rootScope.user);
+    var data = {user: $rootScope.user};
+    Location.getLocations(JSON.stringify(data))
       .then(function(locations) {
         $scope.locations = locations;
         for(var place in locations) {
@@ -24,9 +25,13 @@ angular.module('whereTo.map', [])
       });
   };
 
+  $scope.fetchMarkers();
+  console.log($scope.locations, "nope")
+
 /*------------------- USER INPUT ------------------*/
   $scope.pinMap = function(location) {
     var result = autocomplete.getPlace();
+    console.log(result);
 
     //location passed from call in fetchMarkers or user input
     location = location || result.name;
@@ -68,9 +73,12 @@ angular.module('whereTo.map', [])
       var data = {
         location: location,
         user: $rootScope.user
+        //city: ,
+        //country:
       };
       
       Location.addLocations(data);
+      
     }
 
     $scope.map.location = '';
