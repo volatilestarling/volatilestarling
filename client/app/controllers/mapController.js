@@ -1,8 +1,8 @@
 angular.module('whereTo.map', [])
 
-.controller('MapController', function($scope, $state, MapService, Location, $rootScope) {
+.controller('MapController', function($scope, $state, MapService, Location, Detail, $rootScope) {
   $scope.location = '';
-  $scope.locations;
+  $scope.locations = ["Thailand", "China", "Japan"];
   $scope.tab = 1;
 
 /*---------------- INITIALIZE MAP ---------------*/
@@ -83,5 +83,10 @@ angular.module('whereTo.map', [])
 
     $scope.map.location = '';
   };
+
+  $scope.getLocData = function() {
+    //need to pass user, city, country
+    Detail.locationDetails()
+  }
 
 });

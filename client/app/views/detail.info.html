@@ -1,5 +1,6 @@
-<div ng-controller="InfoController">
-  <div ng-repeat="field in info">
-    <span>{{field}} | {{info.field}}</span>
+<div class="move" ng-controller="InfoController">
+  <div ng-repeat="(field, data) in info">
+    <span>{{field}} | {{ data }}</span>
+
   </div>
 </div>

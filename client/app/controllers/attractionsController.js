@@ -1,14 +1,7 @@
 angular.module('where-to.attr', [])
   .controller('AttractionsController', ['$scope', 'Detail', function($scope, Detail) {
     
-    $scope.attractionsList = Detail.attractions;
-
-    //called when tab is clicked
-    // $scope.getList = function() {
-    //   Detail.locationDetails()
-    //     .then(function(data) {
-    //       $scope.attractionsList = data
-    //     });
-    // };
+    // $scope.attractionsList = Detail.attractions;
+    $scope.attractionsList = [ { "City" : "Bangkok", "Type" : "Markets & Bazaars", "Description" : "Among the largest markets in the world, Chatuchak seems to unite everything buyable, from used vintage sneakers to baby squirrels. Plan to spend a full day here, as there’s plenty to see, do and buy...", "Attraction" : "Chatuchak Weekend Market" }, { "City" : "Bangkok", "Type" : "Religious", "Description" : "Wat Phra Kaew gleams and glitters with so much colour and glory that its earthly foundations seem barely able to resist the celestial pull...", "Attraction" : "Wat Phra Kaew" }, { "City" : "Bangkok", "Type" : "Museums & Galleries", "Description" : "Following his first European tour in 1897, Rama V (King Chulalongkorn; r 1868–1910) returned with visions of European castles and set about transforming these styles into a uniquely Thai expression, today's Dusit Pal...", "Attraction" : "Dusit Palace Park" }, { "City" : "Chiang Mai", "Type" : "Religious", "Description" : "Wat Chedi Luang is not quite as grand as Wat Phra Singh, but its towering, ruined Lanna-style chedi (built in 1441) is much taller and the sprawling compound around the stupa is powerfully atmospheric...", "Attraction" : "Wat Chedi Luang" }, { "City" : "Chiang Mai", "Type" : "Religious", "Description" : "Overlooking the city from its mountain throne, Wat Phra That Doi Suthep is one of northern Thailand's most sacred temples, and its founding legend is learned by every school kid in Chiang Mai...", "Attraction" : "Wat Phra That Doi Suthep" }, { "City" : "Bangkok", "Type" : "Architecture", "Description" : "This jungly compound is the former home of the eponymous American silk entrepreneur and art collector...", "Attraction" : "Jim Thompson House" }, { "City" : "Bangkok", "Type" : "Religious", "Description" : "Also known as the Temple of the Emerald Buddha, Wat Phra Kaew is the colloquial name of the vast, fairy-tale compound that also includes the former residence of the Thai monarch, the Grand Palace\nThis ground was con...", "Attraction" : "Wat Phra Kaew & Grand Palace" }, { "City" : "Bangkok", "Type" : "Religious", "Description" : "After the fall of Ayuthaya, King Taksin ceremoniously clinched control here on the site of a local shrine and established a royal palace and a temple to house the Emerald Buddha...", "Attraction" : "Wat Arun" }, { "City" : "Chiang Mai", "Type" : "Religious", "Description" : "Chiang Mai's most revered temple, Wat Phra Singh is dominated by an enormous, mosaic-inlaid wí·hăhn (sanctuary)...", "Attraction" : "Wat Phra Singh" }, { "City" : "Around Ayuthaya", "Type" : "Castles, Palaces & Mansions", "Description" : "An eclectic assortment of architectural styles makes this a palace like no other...", "Attraction" : "Bang Pa In Palace" }]
 
   }]);

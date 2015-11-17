@@ -27,8 +27,8 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
     })
     .state('detail.itinerary', {
       url: '/itinerary',
-      templateUrl: 'app/views/detail.itinerary.html',
-      controller: 'itineraryController'
+      templateUrl: 'app/views/details.itinerary.html',
+      controller: 'ItineraryController'
     })
     .state('detail.info', {
       url: '/info',

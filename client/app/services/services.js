@@ -199,7 +199,7 @@ angular.module('where-to.services', [])
     return $http({
       method: 'GET',
       url: '/api/location',
-      data: data //user, city, country
+      params: data //user, city, country
     })
     .then(function (resp) {
       info = resp.data.info;
