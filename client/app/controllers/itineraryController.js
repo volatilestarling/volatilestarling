@@ -8,5 +8,5 @@ angular.module('whereTo.itinerary', [])
       .then(function (events) {
         $scope.events = events;
       })
-  }
+  };
 }

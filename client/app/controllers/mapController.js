@@ -78,6 +78,7 @@ angular.module('whereTo.map', [])
       };
       
       Location.addLocations(data);
+      
     }
 
     $scope.map.location = '';

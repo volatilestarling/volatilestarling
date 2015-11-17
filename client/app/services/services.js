@@ -180,6 +180,7 @@ angular.module('where-to.services', [])
       return resp.data;
     });
   };
+  
 
   //may not need this
   var getToDo = function(location) {
