@@ -1,4 +1,4 @@
-angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', 'where-to.attr', 'where-to.detail', 'whereTo.itinerary', 'ui.router'])
+angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', 'where-to.attr', 'where-to.detail', 'whereTo.itinerary', 'where-to.info', 'ui.router'])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
