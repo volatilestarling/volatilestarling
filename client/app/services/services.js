@@ -142,7 +142,7 @@ angular.module('where-to.services', [])
     return $http({
       method: 'GET',
       url: '/api/users',
-      data: user
+      params: user
     })
     .then(function (resp) {
       return resp.data;
@@ -185,7 +185,8 @@ angular.module('where-to.services', [])
   var getToDo = function(location) {
     return $http({
       method: 'GET',
-      url: '/api/users'
+      url: '/api/users',
+      params: location
     })
     .then(function (resp) {
       return resp.data;
