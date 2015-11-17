@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Jira Vinyoopongphan
+  - __Scrum Master__: Nick Jakubowski
+  - __Development Team Members__: Kaijie Zheng
 
 ## Table of Contents
 
@@ -20,15 +20,14 @@
 
 ## Usage
 
-> Some usage instructions
+Create a user account and begin pinning your travel bucket list! Click on the Places tab to get more details on each of your destinations.
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- MongoDB
+- Express
+- Angular
+- Node
 
 ## Development
 
@@ -37,9 +36,8 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
+sudo npm install
 npm install
-bower install
 ```
 
 ### Roadmap
