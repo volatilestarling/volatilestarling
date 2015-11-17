@@ -24,20 +24,22 @@ Once the project moves into development, the press release can be used as a touc
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
-  Where-To is a travel planner that allows you to organize, plan and visualize your future travel plans.
+  Yugen is a travel planner that allows you to organize, plan and visualize your future travel plans.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
-  Life is too short to stay in one place. Where-to allows you to keep track of all the places you want to go and gives you necessary info on the place you are going including passport and currency limits. With suggestions of places to visit and an itinerary that gives you the ability to track your plans Where-To makes travel planning easy. Where-to keeps all your travel plans in one place consolidating your travel bucket list.  
+  Life is too short to stay in one place. Yugen allows you to keep track of all the places you want to go and gives you necessary info on the place you are going including passport and currency limits. With suggestions of places to visit and an itinerary that gives you the ability to track your plans Where-To makes travel planning easy. Where-to keeps all your travel plans in one place consolidating your travel bucket list.  
 
 ## Problem ##
   > Describe the problem your product solves.
 
-  Keeping track of the places you want to go and what you want to see requires a great deal of planning and organization. Yugen 
+  Keeping track of the places you want to go and what you want to see requires a great deal of planning and organization. Yugen lets you keep all your plans in place and gives you the travel information you need. From passport requirements to suggested attractions Yugen makes travel planning a breeze/
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+
+  Simply sign up for an account and you can start adding locations and events to your itinerary. Know travel requirements for your destination and learn about the suggested attractions. 
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
