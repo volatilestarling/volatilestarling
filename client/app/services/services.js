@@ -190,6 +190,7 @@ angular.module('where-to.services', [])
       params: location
     })
     .then(function (resp) {
+      itinerary = resp.data;
       return resp.data;
     });
   };
@@ -202,7 +203,7 @@ angular.module('where-to.services', [])
     })
     .then(function (resp) {
       info = resp.data.info;
-      attractions = resp.data.attractions;
+      attractions = resp.data.location.attractions;
       return resp.data;
     });
   };
