@@ -44,11 +44,23 @@ Once the project moves into development, the press release can be used as a touc
 ## Quote from You ##
   > A quote from a spokesperson in your company.
 
+  The most amazing app ever! 
+
+  - Spokesperson
+
 ## How to Get Started ##
   > Describe how easy it is to get started.
+
+  Simply sign up for an account, sign in and start adding destinations to your map to start planning your future travels.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
+  "I would never remember everywhere I want to go before I die. Yugen allows me to add locations, plan trips and see attractions that I didn't know about"
+
+  - Super Excited Customer
+
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+
+  Go to https://protected-forest-3682.herokuapp.com sign up today and get started planning your adventures!
