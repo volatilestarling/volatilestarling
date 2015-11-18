@@ -1,16 +1,28 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="ui fixed menu">
   <div class="container">
-  <a class="navbar-brand" href="#/map">Where To?</a>
-    <button ui-sref="login" class="btn btn-default navbar-right navbar-btn ">Login</button>
+  <a class="ui header item" href="#/map">Where To?</a>
   </div>
 </nav>
-<img src="./assets/worldmap.png" alt="">
-<div id='signup' class='text-center'>
-  <h1>create a new account</h1>
-  <form name="signupForm" class="form-signin"ng-submit='signup()'>
-    <input type='text' ng-model='user.username' class="form-control" placeholder="wanderlust@whereto.com">
-    <input type="password" ng-model='user.password' class="form-control" placeholder="password">
-    <button class="btn btn-lg btn-primary btn-block">signup</button>
-  </form>
-</div>
 
+<div class="ui grid">
+    <div id="homeimg" class="five wide column">
+        <img class="ui large image" src="./assets/worldmap.png" alt="">
+    </div>
+    <div id="signup" class="six wide column right floated">
+        <h1>Create a New Account</h1>
+        <form name="signupForm" class="ui form" ng-submit='signup()'>
+            <div class="field">
+                <input type='text' ng-model='user.username' placeholder="wanderlust@whereto.com">
+            </div>
+            <div class="field">
+                <input type="password" ng-model='user.password' placeholder="password">
+            </div>
+            <button class="ui teal button medium fluid">Sign Up</button>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <button class="ui teal button small fluid" ui-sref="login">Log In</button>
+        </form>
+    </div>
+</div>
+</div>

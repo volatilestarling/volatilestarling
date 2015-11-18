@@ -1,22 +1,22 @@
-<div class="move" ng-controller="AttractionsController">
-<div ng-repeat="attraction in attractionsList">
+<div class="move ui three column grid container">
+  <div ng-repeat="attraction in attractionsList" class="column">
     <div class="ui link cards">
-    <!-- INDIVIDUAL CARD VIEW -->
-    <div class="card">
-<!--       <div class="image">
-        <img src="https://static-s.aa-cdn.net/img/ios/371279677/1fbf8e2fbaf52b6caa1d1de481f8eeb9?v=1">
-      </div> -->
-      <div class="content">
-        <div class="header">{{ attraction.Title }}</div>
-        <div class="meta">
-          <a>{{ attraction.Type }}</a>
-          <a> {{ attraction.City }}</a>
+        <!-- INDIVIDUAL CARD VIEW -->
+      <div class="card">
+        <div class="image">
+            <img src="https://static-s.aa-cdn.net/img/ios/371279677/1fbf8e2fbaf52b6caa1d1de481f8eeb9?v=1">
         </div>
-        <div class="description">
-          {{ attraction.Description }}
+        <div class="content">
+            <div class="header">{{ attraction.Title }}</div>
+            <div class="meta">
+                <a>{{ attraction.Type }}</a>
+                <a>{{ attraction.City }}</a>
+            </div>
+            <div class="description">
+                {{ attraction.Description }}
+            </div>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
-</div> 
-  
+</div>

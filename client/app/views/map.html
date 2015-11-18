@@ -1,9 +1,8 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container" ng-controller="AuthController">
-        <a class="navbar-brand" href="#">Where To?</a>
-        <button ng-click="logout()" class="btn btn-default navbar-right navbar-btn ">Logout</button>
+<!-- <nav class="ui fixed menu">
+    <div class="container">
+        <a class="header item" href="#">Yugen</a>
     </div>
-</nav>
+</nav> -->
 <div ng-controller="MapController">
   <br><br>
     <div class="ui two item menu">
@@ -26,7 +25,7 @@
  
       <div class="place" ng-repeat="location in locations">
         <!-- call locationsdetails in map controller -->
-        <div class="ui teal segment" title="Name" ng-click="getLocData()"> <a href="#/detail/info">{{ location }}</a> </div>
+        <div ui-sref="detail.info" class="ui teal segment" ng-click="getLocData()"> {{ location }} </div>
       </div>
 
 <!--   </table> -->

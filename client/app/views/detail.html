@@ -1,11 +1,13 @@
-
-<div class="ui top attached tabular menu">
-  <a ui-sref="detail.info" class="item active">Info</a>
-  <a ui-sref="detail.attractions" class="item" data-tab="second">Attractions</a>
-  <a ui-sref="detail.itinerary" class="item" data-tab="third">Itinerary</a>
+<div class="ui grid container">
+    <div class="ui segment">
+        <div class="ui menu top">
+            <a ui-sref="detail.info" class="item active">Info</a>
+            <a ui-sref="detail.attractions" class="item" data-tab="second">Attractions</a>
+            <a ui-sref="detail.itinerary" class="item" data-tab="third">Itinerary</a>
+        </div>
+        <div ui-view></div>
+    </div>
 </div>
-
-<div ui-view></div>
 <!-- <div class="ui bottom attached tab segment" data-tab="first">
   <h1>Info</h1>
 </div>

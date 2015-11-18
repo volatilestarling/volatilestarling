@@ -1,8 +1,15 @@
 <div class="move">
   <h1>Intinerary</h1>
     <form name="plans" ng-submit="addEvent()">
-      <input class="text" name="event" placeholder="Add event" ng-model="event">
-      <button type="submit" value="addEvent">Submit</button>
+      <div class="ui action input">
+     
+         <input name="event" placeholder="Add event" ng-model="event">
+        <button class="ui icon button teal" type="submit" value="addEvent">
+          <i class="add square icon"></i>
+        </button>
+      
+      </div>
+     
     </form>
     <div class="panel panel-default" ng-repeat="event in events">
       <div class="panel-body">
