@@ -2,16 +2,22 @@
 <html ng-app='whereto'>
   <head>
     <meta charset="utf-8" />
-    <title>Where-To</title>
+    <title>Yugen</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
     <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.css">
   </head>
   <body>
-    
+    <nav class="ui teal inverted fixed menu" ng-controller="AuthController">
+        <div class="container">
+            <a class="header item" ui-sref="map">Yugen</a>
+            <div ng-show="signedIn" class="ng-hide">
+               <button class="ui inverted small button">Log Out</button>
+            </div>
+           
+        </div>
+    </nav>
   <div ui-view></div>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBBNf4qxjRZMaR11lRp3M-8EoOcnv0lzI&libraries=places"></script>
 
@@ -28,7 +34,7 @@
   <script src="app/controllers/detailController.js"></script>
   <script src="app/controllers/itineraryController.js"></script>
   <script src="app/controllers/infoController.js"></script>
-  
+
   <script src="//oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
 
   </body>

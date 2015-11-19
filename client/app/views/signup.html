@@ -1,16 +1,25 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-  <a class="navbar-brand" href="#/map">Where To?</a>
-    <button ui-sref="login" class="btn btn-default navbar-right navbar-btn ">Login</button>
-  </div>
-</nav>
-<img src="./assets/worldmap.png" alt="">
-<div id='signup' class='text-center'>
-  <h1>create a new account</h1>
-  <form name="signupForm" class="form-signin"ng-submit='signup()'>
-    <input type='text' ng-model='user.username' class="form-control" placeholder="wanderlust@whereto.com">
-    <input type="password" ng-model='user.password' class="form-control" placeholder="password">
-    <button class="btn btn-lg btn-primary btn-block">signup</button>
-  </form>
+<!-- AuthController -->
+<div class="ui middle aligned center aligned grid">
+    <div id="login" class="six wide column">
+        <h1>Show Me the Map!</h1>
+        <form name="loginForm" class="ui form" ng-submit='signup()'>
+            <div class="field">
+                <div class="ui left icon input">
+                    <input type='text' ng-model='user.username' placeholder="wanderlust@whereto.com">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <input type="password" ng-model='user.password' placeholder="password">
+                    <i class="lock icon"></i>
+                </div>
+            </div>
+            <button class="ui teal button medium fluid">Sign Up</button>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <button class="ui teal button small fluid" ui-sref="login">Log In</button>
+        </form>
+    </div>
 </div>
-

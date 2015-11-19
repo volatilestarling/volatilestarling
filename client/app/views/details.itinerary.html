@@ -1,12 +1,17 @@
-<div class="move">
+<!-- ItineraryController -->
+<div>
   <h1>Intinerary</h1>
     <form name="plans" ng-submit="addEvent()">
-      <input class="text" name="event" placeholder="Add event" ng-model="event">
-      <button type="submit" value="addEvent">Submit</button>
+      <div class="ui action input">
+         <input name="event" placeholder="Add event" ng-model="event">
+        <button class="ui icon button teal" type="submit" value="addEvent">
+          <i class="add square icon"></i>
+        </button>
+      </div>    
     </form>
     <div class="panel panel-default" ng-repeat="event in events">
       <div class="panel-body">
-        <a>{{ event }}</a><span class="delete"><button ng-click="delete()">Delete</button></span>
+        <div class="ui segment"> {{ event }} <button class="ui tiny button right floated" ng-click="delete()">Delete</button></div>
       </div>
     </div>  
 </div>

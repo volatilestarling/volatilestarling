@@ -2,6 +2,7 @@ angular.module('whereTo.auth', [])
 .controller('AuthController', ['$scope', '$state', 'Auth', '$rootScope', '$window', function($scope, $state, Auth, $rootScope, $window) {
 
   $scope.user = {};
+  $scope.signedIn = false;
 
   $scope.signin = function () {
     Auth.signin($scope.user)
@@ -13,6 +14,8 @@ angular.module('whereTo.auth', [])
       .catch(function (error) {
         console.error(error);
       });
+    $scope.signedIn = true;
+    console.log($scope.signedIn)
   };
 
   $scope.signup = function () {
@@ -21,6 +24,7 @@ angular.module('whereTo.auth', [])
         $window.localStorage.setItem('com.whereto', token);
         $rootScope.user = $scope.user.username;
         $state.go('map');
+        $scope.signedIn = true;
       })
       .catch(function (error) {
         console.error(error);
@@ -30,6 +34,7 @@ angular.module('whereTo.auth', [])
   $scope.logout = function () {
     Auth.signout();
     $rootScope.user = null;
+     $scope.signedIn = false;
   };
 
 }]);
