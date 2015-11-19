@@ -2,6 +2,70 @@ angular.module('where-to.attr', [])
   .controller('AttractionsController', ['$scope', 'Detail', function($scope, Detail) {
     
     // $scope.attractionsList = Detail.attractions;
-    $scope.attractionsList = [ { "City" : "Bangkok", "Type" : "Markets & Bazaars", "Description" : "Among the largest markets in the world, Chatuchak seems to unite everything buyable, from used vintage sneakers to baby squirrels. Plan to spend a full day here, as there’s plenty to see, do and buy...", "Attraction" : "Chatuchak Weekend Market" }, { "City" : "Bangkok", "Type" : "Religious", "Description" : "Wat Phra Kaew gleams and glitters with so much colour and glory that its earthly foundations seem barely able to resist the celestial pull...", "Attraction" : "Wat Phra Kaew" }, { "City" : "Bangkok", "Type" : "Museums & Galleries", "Description" : "Following his first European tour in 1897, Rama V (King Chulalongkorn; r 1868–1910) returned with visions of European castles and set about transforming these styles into a uniquely Thai expression, today's Dusit Pal...", "Attraction" : "Dusit Palace Park" }, { "City" : "Chiang Mai", "Type" : "Religious", "Description" : "Wat Chedi Luang is not quite as grand as Wat Phra Singh, but its towering, ruined Lanna-style chedi (built in 1441) is much taller and the sprawling compound around the stupa is powerfully atmospheric...", "Attraction" : "Wat Chedi Luang" }, { "City" : "Chiang Mai", "Type" : "Religious", "Description" : "Overlooking the city from its mountain throne, Wat Phra That Doi Suthep is one of northern Thailand's most sacred temples, and its founding legend is learned by every school kid in Chiang Mai...", "Attraction" : "Wat Phra That Doi Suthep" }, { "City" : "Bangkok", "Type" : "Architecture", "Description" : "This jungly compound is the former home of the eponymous American silk entrepreneur and art collector...", "Attraction" : "Jim Thompson House" }, { "City" : "Bangkok", "Type" : "Religious", "Description" : "Also known as the Temple of the Emerald Buddha, Wat Phra Kaew is the colloquial name of the vast, fairy-tale compound that also includes the former residence of the Thai monarch, the Grand Palace\nThis ground was con...", "Attraction" : "Wat Phra Kaew & Grand Palace" }, { "City" : "Bangkok", "Type" : "Religious", "Description" : "After the fall of Ayuthaya, King Taksin ceremoniously clinched control here on the site of a local shrine and established a royal palace and a temple to house the Emerald Buddha...", "Attraction" : "Wat Arun" }, { "City" : "Chiang Mai", "Type" : "Religious", "Description" : "Chiang Mai's most revered temple, Wat Phra Singh is dominated by an enormous, mosaic-inlaid wí·hăhn (sanctuary)...", "Attraction" : "Wat Phra Singh" }, { "City" : "Around Ayuthaya", "Type" : "Castles, Palaces & Mansions", "Description" : "An eclectic assortment of architectural styles makes this a palace like no other...", "Attraction" : "Bang Pa In Palace" }]
+    $scope.attractionsList = [
+      {
+        "Attraction": "Forbidden City",
+        "Description": "Ringed by a 52m-wide moat at the very heart of Běijīng, the Forbidden City is China’s largest and best-preserved collection of ancient buildings, and the largest palace complex in the world...",
+        "Type": "Historic",
+        "City": "Běijīng",
+        "Link": "http://www.lonelyplanet.com/china/sights/historic/forbidden-city/item-a-368617-id"
+      },
+      {
+        "Attraction": "Sakya Monastery",
+        "Description": "The immense, grey, thick-walled southern monastery is one of Tibet’s most impressive constructed sights, and one of the largest monasteries...",
+        "Type": "Religious",
+        "City": "Sakya",
+        "Link": "http://www.lonelyplanet.com/china/sights/religious/sakya-monastery/item-a-1239844-id"
+      },
+      {
+        "Attraction": "Temple of Heaven Park",
+        "Description": "A tranquil oasis of peace and methodical Confucian design in one of China’s busiest urban landscapes, the 267-hectare Temple of Heaven Park is absolutely unique...",
+        "Type": "Parks & Gardens",
+        "City": "Běijīng",
+        "Link": "http://www.lonelyplanet.com/china/sights/parks-gardens/temple-heaven-park/item-a-1106060-id"
+      },
+      {
+        "Attraction": "Gyantse Kumbum",
+        "Description": "Commissioned by a Gyantse prince in 1427 and sitting inside the Pelkor Chöde complex, the Gyantse Kumbum is the town’s foremost attraction...",
+        "Type": "Religious",
+        "City": "Gyantse",
+        "Link": "http://www.lonelyplanet.com/china/sights/religious/gyantse-kumbum/item-a-1442852-id"
+      },
+      {
+        "Attraction": "West Lake",
+        "Description": "The unashamed tourist brochure hyperbole extolling West Lake is almost justified in its shrill accolades...",
+        "Type": "Lakes, Rivers & Waterfalls",
+        "City": "Hángzhōu",
+        "Link": "http://www.lonelyplanet.com/china/sights/lakes-rivers-waterfalls/west-lake/item-a-473520-id"
+      },
+      {
+        "Attraction": "Barkhor Circuit",
+        "Description": "For your first few visits to the Barkhor circuit, it’s best to let yourself be dragged along by the centrifugal tide of pilgrims, but there are also several small, fascinating temples to pop into en route\nAs you foll...",
+        "Type": "Religious",
+        "City": "Lhasa",
+        "Link": "http://www.lonelyplanet.com/china/sights/religious/barkhor-circuit/item-a-1442161-id"
+      },
+      {
+        "Attraction": "Bìshǔ Shānzhuāng",
+        "Description": "The imperial summer resort is composed of a main palace complex and vast parklike gardens, all enclosed by a handsome 10km-long wall...",
+        "Type": "Historic",
+        "City": "Chéngdé",
+        "Link": "http://www.lonelyplanet.com/china/sights/historic/bish-shanzhuang/item-a-472950-id"
+      },
+      {
+        "Attraction": "Potala Palace",
+        "Description": "The magnificent Potala Palace, once the seat of the Tibetan government and the winter residence of the Dalai Lamas, is Lhasa's cardinal landmark...",
+        "Type": "Castles, Palaces & Mansions",
+        "City": "Lhasa",
+        "Link": "http://www.lonelyplanet.com/china/sights/castles-palaces-mansions/potala-palace/item-a-435266-id"
+      },
+      {
+        "Attraction": "Hòuhǎi Lakes",
+        "Description": "Also known as Shíchàhǎi (什刹海) but mostly just referred to collectively as ‘Hòuhǎi’, the Hòuhǎi Lakes are compromised of three lakes: Qiánhǎi (Front Lake), Hòuhǎi (Back Lake) and Xīhǎi (West Lake)...",
+        "Type": "Other",
+        "City": "Běijīng",
+        "Link": "http://www.lonelyplanet.com/china/sights/other/houh-i-lakes/item-a-1313034-id"
+      }
+    ]
 
   }]);

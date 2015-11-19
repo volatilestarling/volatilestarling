@@ -9,9 +9,13 @@
     <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <nav class="ui fixed menu">
+    <nav class="ui teal inverted fixed menu" ng-controller="AuthController">
         <div class="container">
-            <a class="header item" href="#">Yugen</a>
+            <a class="header item" ui-sref="map">Yugen</a>
+            <div ng-show="signedIn" class="ng-hide">
+               <button class="ui inverted small button">Log Out</button>
+            </div>
+           
         </div>
     </nav>
   <div ui-view></div>
@@ -30,7 +34,7 @@
   <script src="app/controllers/detailController.js"></script>
   <script src="app/controllers/itineraryController.js"></script>
   <script src="app/controllers/infoController.js"></script>
-  
+
   <script src="//oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
 
   </body>

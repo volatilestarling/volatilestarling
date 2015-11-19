@@ -1,20 +1,19 @@
-<!-- <nav class="ui fixed menu">
-    <div class="ui container">
-        <a class="header item" ui-sref="map">Yugen</a>
-    </div>
-</nav> -->
-<div class="ui grid">
-    <div id="homeimg" class="five wide column">
-        <img class="ui large image" src="./assets/worldmap.png" alt="">
-    </div>
-    <div id="login" class="six wide column right floated">
+<!-- AuthController -->
+<div class="ui middle aligned center aligned grid">
+    <div id="login" class="six wide column">
         <h1>Show Me the Map!</h1>
         <form name="loginForm" class="ui form" ng-submit='signin()'>
             <div class="field">
-                <input type='text' ng-model='user.username' placeholder="wanderlust@whereto.com">
+                <div class="ui left icon input">
+                    <input type='text' ng-model='user.username' placeholder="wanderlust@whereto.com">
+                    <i class="user icon"></i>
+                </div>
             </div>
             <div class="field">
-                <input type="password" ng-model='user.password' placeholder="password">
+                <div class="ui left icon input">
+                    <input type="password" ng-model='user.password' placeholder="password">
+                    <i class="lock icon"></i>
+                </div>
             </div>
             <button class="ui teal button medium fluid">Login</button>
             <div class="ui horizontal divider">
@@ -23,5 +22,4 @@
             <button class="ui teal button small fluid" ui-sref="signup">Sign Up</button>
         </form>
     </div>
-</div>
 </div>

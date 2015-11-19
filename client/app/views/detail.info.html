@@ -1,6 +1,10 @@
-<div class="move">
+<!-- InfoController -->
   <div ng-repeat="(field, data) in info">
-    <span>{{field}} | {{ data }}</span>
-
+    <div class="ui medium dividing teal header">
+      <b>{{field}}</b>
+    </div> 
+    <div>
+      {{ data }}
+    </div>
+    <br>
   </div>
-</div>

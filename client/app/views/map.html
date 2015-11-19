@@ -1,32 +1,26 @@
-<!-- <nav class="ui fixed menu">
-    <div class="container">
-        <a class="header item" href="#">Yugen</a>
-    </div>
-</nav> -->
-<div ng-controller="MapController">
-  <br><br>
+<!-- MapController -->
+<div>
+    <br>
+    <br>
     <div class="ui two item menu">
-      <a class="item" ng-click='tab = 1'>Map</a>
-      <a class="item" ng-click='tab = 2'>Places</a>
+        <a class="item" ng-click='tab = 1'>Map</a>
+        <a class="item" ng-click='tab = 2'>Places</a>
     </div>
     <div id="mapdisplay" ng-show='tab === 1'></div>
     <br>
-    <div class="col-md-4 col-md-offset-4">
-        <form name="locationForm" ng-submit="pinMap()">
-            <div class="input-group" ng-show='tab === 1'>
-                <input id="search" type="text" class="form-control input-lg" placeholder="add a destination" ng-model="map.location">
-                <span class="input-group-btn">
-          <button ng-click="pinMap()" class="btn-lg btn btn-default" type="button">Mark the Map!</button>
-        </span>
+    <div class="ui middle aligned center aligned grid">
+        <form name="locationForm" class="ui form" ng-submit="pinMap()">
+            <div ng-show='tab === 1'>
+                <div class="ui action input">
+                    <input id="search" type="text" class="ui medium input" placeholder="add a destination" ng-model="map.location">
+                    <button ng-click="pinMap()" class="ui teal button" type="button">Mark the Map!</button>
+                </div>
             </div>
         </form>
     </div>
-   <!--  <table class="ui very basic collapsing celled table table-center" ng-show='tab === 2'> -->
- 
-      <div class="place" ng-repeat="location in locations">
-        <!-- call locationsdetails in map controller -->
-        <div ui-sref="detail.info" class="ui teal segment" ng-click="getLocData()"> {{ location }} </div>
-      </div>
-
-<!--   </table> -->
+    <div ng-show='tab === 2'>
+        <div class="place" ng-repeat="location in locations">
+            <div ui-sref="detail.info" class="ui teal segment" ng-click="getLocData()"> {{ location }} </div>
+        </div>
+    </div>
 </div>

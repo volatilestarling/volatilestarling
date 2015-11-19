@@ -1,20 +1,15 @@
-<div class="ui grid container">
+<div id="detail" class="ui contain">
     <div class="ui segment">
-        <div class="ui menu top">
-            <a ui-sref="detail.info" class="item active">Info</a>
+      <!-- Tabbed Menu -->
+        <div class="ui pointing menu">
+            <a ui-sref="detail.info" class="active item">Info</a>
             <a ui-sref="detail.attractions" class="item" data-tab="second">Attractions</a>
             <a ui-sref="detail.itinerary" class="item" data-tab="third">Itinerary</a>
         </div>
-        <div ui-view></div>
+        <div class="ui segment">
+          <!-- Nested view for Info, Attractions, Itinerary templates -->
+          <div ui-view></div>
+        </div>
     </div>
 </div>
-<!-- <div class="ui bottom attached tab segment" data-tab="first">
-  <h1>Info</h1>
-</div>
-<div class="ui bottom attached tab segment active" data-tab="second">
-  <h1>Attractions</h1>
-</div>
-<div class="ui bottom attached tab segment active" data-tab="second">
-  <h1>Attractions</h1>
-</div> -->
 
