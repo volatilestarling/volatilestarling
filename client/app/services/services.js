@@ -196,14 +196,15 @@ angular.module('where-to.services', [])
   };
 
   var locationDetails = function(data) {
+    var url = '/api/location?' + 'user=' + data.user + '&city=' + data.city + '&country=' + data.country
     return $http({
       method: 'GET',
-      url: '/api/location',
-      params: data //user, city, country
+      url: url
     })
     .then(function (resp) {
+      console.log('response', resp)
       info = resp.data.info;
-      attractions = resp.data.location.attractions;
+      attractions = resp.data.attractions;
       return resp.data;
     });
   };

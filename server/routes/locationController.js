@@ -6,9 +6,11 @@ var request = require('request');
 
 module.exports = {
   retrieveData: function (req, res, next) {
-    var username = req.body.username;
-    var city = req.body.city;
-    var country = req.body.country;
+    // Sample GET request from front end: /api/location?city=shanghai&country=china&user=kaijie@gmail.com
+    console.log('params', req.query)
+    var username = req.query.user;
+    var city = req.query.city;
+    var country = req.query.country;
 
     var url = 'http://travel.state.gov/content/passports/en/country/' + country.toLowerCase() + '.html';
 
@@ -34,7 +36,7 @@ module.exports = {
                   data[content.children().first().text()] = content.children().last().text();
                 });
               }
-
+              console.log('deets', data)
               res.status(200).send(location);
             }
           });
@@ -45,6 +47,7 @@ module.exports = {
       });
   },
   addCity: function (req, res, next) {
+    console.log('addCity', req.body)
     var place = req.body.place;
     var city = req.body.city;
     var country = req.body.country;
@@ -65,7 +68,7 @@ module.exports = {
         } else {
           findCity({ city: city, country: country })
             .then(function (location) {
-
+console.log('finding city')
               var newLocation;
               if (!location) {
                 var create = Q.nbind(Location.create, Location);
@@ -133,7 +136,8 @@ module.exports = {
             "Attraction": "National Palace Museum",
             "Description": "Home to the world's largest and arguably finest collection of Chinese art, this vast collection covers treasures in painting, calligraphy, statuary, bronzes, laquerware, ceramics, jade and religious objects...",
             "City": "Taipei",
-            "Type": "Museums & Galleries"
+            "Type": "Museums & Galleries",
+            "Link": "http://www.lonelyplanet.com/australia/sights/historic/historic-port-echuca/item-a-1164731-id"
           }
         */
         callback(err, response, body);
