@@ -19,7 +19,7 @@
         </form>
     </div>
     <div ng-show='tab === 2'>
-        <div class="place" ng-repeat="location in locations">
+        <div class="place" ng-repeat="(location, todo) in locations">
             <div ui-sref="detail.info" class="ui teal segment" ng-click="getLocData()"> {{ location }} </div>
         </div>
     </div>

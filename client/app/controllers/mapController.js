@@ -15,9 +15,9 @@ angular.module('whereTo.map', [])
 
   $scope.fetchMarkers = function() {
     console.log($rootScope.user);
-    var data = {user: $rootScope.user};
-    Location.getLocations(JSON.stringify(data))
+    Location.getLocations($rootScope.user)
       .then(function(locations) {
+        console.log('users locations:', locations)
         $scope.locations = locations;
         for(var place in locations) {
           $scope.pinMap(place);
@@ -26,7 +26,7 @@ angular.module('whereTo.map', [])
   };
 
   $scope.fetchMarkers();
-  console.log($scope.locations, "nope")
+  console.log('locations', $scope.locations)
 
 /*------------------- USER INPUT ------------------*/
   $scope.pinMap = function(location) {
@@ -84,8 +84,9 @@ angular.module('whereTo.map', [])
          }
        }
       }
-      
+      console.log('data to add locations', data)
       Location.addLocations(data);
+      Location.addUserLocation(data);
       
     }
 
