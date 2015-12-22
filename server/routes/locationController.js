@@ -1,10 +1,15 @@
 var Location = require('../models/locationModel');
 var User = require('../models/userModel');
 var Q = require('q');
-var cheerio = require('cheerio');
 var request = require('request');
 
 module.exports = {
+	/**
+	 * Request handler to retrieve location information including attractions and travel state information
+	 * @param req
+	 * @param res
+	 * @param next
+	 */
 	retrieveData: function (req, res, next) {
 		// Sample GET request from front end: /api/location?city=shanghai&country=china&user=kaijie@gmail.com
 		console.log('params', req.query)
@@ -12,47 +17,25 @@ module.exports = {
 		var city = req.query.city;
 		var country = req.query.country;
 
-		var url = 'http://travel.state.gov/content/passports/en/country/' + country.toLowerCase() + '.html';
-
 		var findCity = Q.nbind(Location.findOne, Location);
 		findCity({city: city})
 			.then(function (location) {
 				if (!location) {
 					next(new Error('Location does not exist'));
 				} else {
-					//request(url, function (error, response, html) {
-					//	if (!error) {
-					//		var $ = cheerio.load(html);
-					//		var data = {
-					//			location: location
-					//		};
-					//
-					//	var getInfo = Q.nfcall(module.exports.fetchStateInfo, country);
-					//
-					//	getInfo
-					//		.then(function(info) {
-					//			data.info = JSON.parse(info.results);
-					//			res.status(200).send(data);
-					//		})
-
-							//for (var i = 1; i <= 6; i++) {
-							//	var selector = '.quick_fact' + i;
-							//
-							//	$(selector).filter(function () {
-							//		var content = $(this);
-							//		data[content.children().first().text()] = content.children().last().text();
-							//	});
-							//}
-							//console.log('deets', data)
-							res.status(200).send(location);
-						//}
-					//});
+					res.status(200).send(location);
 				}
 			})
 			.fail(function (error) {
 				next(error);
 			});
 	},
+	/**
+	 * Request handler for new locations. Creates a new location document with top attractions.
+	 * @param req
+	 * @param res
+	 * @param next
+	 */
 	addCity: function (req, res, next) {
 		console.log('addCity', req.body)
 		var place = req.body.place;
@@ -85,7 +68,6 @@ module.exports = {
 									info: null
 								};
 
-
 								var fetchCB = function (err, response, body) {
 									//array of attractions (objects)
 									var toDoList = JSON.parse(body);
@@ -116,15 +98,21 @@ module.exports = {
 							}
 						});
 				}
+				/* Used to delay the addStateInfo call due to Kimono Lab request limits */
 				setTimeout(function() {
 					next();
-				}, 10000)
+				}, 9000)
 			})
 			.fail(function (error) {
 				next(error);
 			});
 	},
 
+	/**
+	 * Request handler called after location has been added to the database to retrieve and update location with state info
+	 * @param req
+	 * @param res
+	 */
 	addStateInfo: function(req, res) {
 		var country = req.body.country;
 
