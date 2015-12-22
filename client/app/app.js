@@ -22,6 +22,7 @@ angular.module('whereto', ['whereTo.map', 'where-to.services', 'whereTo.auth', '
     })
     .state('detail', {
       url: '/detail',
+      abstract: true,
       templateUrl: 'app/views/detail.html',
       controller: 'DetailController'
     })

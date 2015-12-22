@@ -196,15 +196,17 @@ angular.module('where-to.services', [])
   };
 
   var locationDetails = function(data) {
+    var that = this;
     var url = '/api/location?' + 'user=' + data.user + '&city=' + data.city + '&country=' + data.country
     return $http({
       method: 'GET',
       url: url
     })
     .then(function (resp) {
-      console.log('response', resp)
-      info = resp.data.info;
-      attractions = resp.data.attractions;
+      that.info = resp.data.info;
+      console.log('info', info)
+      that.attractions = resp.data.attractions;
+      console.log('attractions', attractions)
       return resp.data;
     });
   };
@@ -213,8 +215,8 @@ angular.module('where-to.services', [])
     addToDo: addToDo,
     getToDo: getToDo,
     locationDetails: locationDetails,
-    info: info,
-    attractions: attractions,
-    itinerary: itinerary
+    info: this.info,
+    attractions: this.attractions,
+    itinerary: this.itinerary
   }
 });

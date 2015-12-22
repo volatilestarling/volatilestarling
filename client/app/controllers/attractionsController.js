@@ -1,13 +1,13 @@
 angular.module('where-to.attr', [])
   .controller('AttractionsController', ['$scope', 'Detail', function($scope, Detail) {
     
-    $scope.attractionsList;
+    $scope.attractionsList = Detail.attractions;
 
-    Detail.locationDetails({user: 'lala', city: 'london', country: 'england'})
-      .then(function(results) {
-        console.log('hey!', results)
-        $scope.attractionsList = results.attractions;
-      });
+    //Detail.locationDetails({user: 'lala', city: 'madrid', country: 'spain'})
+    //  .then(function(results) {
+    //    console.log('hey!', results)
+    //    $scope.attractionsList = results.attractions;
+    //  });
     // $scope.attractionsList = [
     //   {
     //     "Attraction": "Forbidden City",

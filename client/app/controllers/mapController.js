@@ -2,7 +2,7 @@ angular.module('whereTo.map', [])
 
 .controller('MapController', function($scope, $state, MapService, Location, Detail, $rootScope) {
   $scope.location = '';
-  $scope.locations = ["Thailand", "China", "Japan"];
+  $scope.locations = ["Thailand"]
   $scope.tab = 1;
 
 /*---------------- INITIALIZE MAP ---------------*/
@@ -67,15 +67,23 @@ angular.module('whereTo.map', [])
     });
 
     //if it is a new location, add it to the user's list
-    console.log('$rootScope.user =', $rootScope.user);
-    console.log('location =', location);
     if(result.name !== undefined) {
       var data = {
-        location: location,
-        user: $rootScope.user
-        //city: ,
-        //country:
+        place: location,
+        username: $rootScope.user
       };
+      //result is autocomplete object
+      var components = result.address_components
+
+      for(var i = 0; i < components.length; i++) {
+       for(var j = 0; j < components[i].types.length; j++) {
+         if(components[i].types[j] === 'country') {
+           data.country = components[i].long_name;
+         } else if(components[i].types[j] === 'locality') {
+           data.city = components[i].long_name;
+         }
+       }
+      }
       
       Location.addLocations(data);
       
@@ -85,8 +93,8 @@ angular.module('whereTo.map', [])
   };
 
   $scope.getLocData = function() {
-    //need to pass user, city, country
-    Detail.locationDetails()
+    //need to pass user, city, country as query string to GET request
+    Detail.locationDetails({user: 'tester1@gmail.com', city: 'bangkok', country: 'thailand'});
   }
 
 });
