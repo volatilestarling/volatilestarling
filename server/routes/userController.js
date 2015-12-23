@@ -47,7 +47,8 @@ module.exports = {
           create = Q.nbind(User.create, User);
           newUser = {
             username: username,
-            password: password
+            password: password,
+            locations: {}
           };
           return create(newUser);
         }
@@ -97,12 +98,18 @@ module.exports = {
       .then(function(foundUser) {
         if(foundUser) {
           console.log('hello')
-          console.log(foundUser);
           //initialize to an empty array to hold itinerary
-          foundUser.locations[location] = [];
-          console.log('added location');
-          console.log(foundUser.locations);
-          res.status(201);
+          if(!foundUser.locations) {
+            foundUser.locations = {};
+            foundUser.locations[location] = [];
+          } else {
+            foundUser.locations[location] = [];
+          }
+
+          foundUser.markModified('locations')
+          foundUser.save();
+
+          res.status(201).send(foundUser.locations);
         } else {
           console.error('Could not find user');
           res.status(404);
@@ -112,7 +119,7 @@ module.exports = {
   },
 
   getUserLocation: function (req, res, next) {
-    var user = req.params.user;
+    var user = req.query.user;
     console.log(user);
     console.log(req.body);
     var findUser = Q.nbind(User.findOne, User);
