@@ -13,12 +13,23 @@ module.exports = {
 	retrieveData: function (req, res, next) {
 		// Sample GET request from front end: /api/location?city=shanghai&country=china&user=kaijie@gmail.com
 		console.log('params', req.query)
+		//TODO: handle retreiving user's todos
 		var username = req.query.user;
 		var city = req.query.city;
 		var country = req.query.country;
+		var query;
+
+		if(city) {
+			city = city.toLowerCase();
+			country = country.toLowerCase();
+			query = {city: city, country: country}
+		} else {
+			country = country.toLowerCase();
+			query = {country: country}
+		}
 
 		var findCity = Q.nbind(Location.findOne, Location);
-		findCity({city: city})
+		findCity(query)
 			.then(function (location) {
 				if (!location) {
 					next(new Error('Location does not exist'));
@@ -42,7 +53,16 @@ module.exports = {
 		var city = req.body.city;
 		var country = req.body.country;
 		var username = req.body.username;
+		var locationQuery;
 
+		if(city) {
+			city = city.toLowerCase();
+			country = country.toLowerCase();
+			locationQuery = {city: city, country: country}
+		} else {
+			country = country.toLowerCase();
+			locationQuery = {country: country}
+		}
 		// need to add location to userSchema too
 		var findUser = Q.nbind(User.findOne, User);
 		var findCity = Q.nbind(Location.findOne, Location);
@@ -54,7 +74,7 @@ module.exports = {
 				if (!user) {
 					next(new Error('User does not exist'));
 				} else {
-					findCity({city: city, country: country})
+					findCity(locationQuery)
 						.then(function (location) {
 
 							var newLocation;
@@ -114,7 +134,7 @@ module.exports = {
 	 * @param res
 	 */
 	addStateInfo: function(req, res) {
-		var country = req.body.country;
+		var country = req.body.country.toLowerCase();
 
 		var getInfo = Q.nfcall(module.exports.fetchStateInfo, country);
 		var findCity = Q.nbind(Location.findOne, Location);
