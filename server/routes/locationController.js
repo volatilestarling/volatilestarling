@@ -41,7 +41,7 @@ module.exports = {
 		var place = req.body.place;
 		var city = req.body.city;
 		var country = req.body.country;
-		var username = req.body.user;
+		var username = req.body.username;
 
 		// need to add location to userSchema too
 		var findUser = Q.nbind(User.findOne, User);
@@ -101,7 +101,7 @@ module.exports = {
 				/* Used to delay the addStateInfo call due to Kimono Lab request limits */
 				setTimeout(function() {
 					next();
-				}, 9000)
+				}, 9000);
 			})
 			.fail(function (error) {
 				next(error);
@@ -128,10 +128,10 @@ module.exports = {
 					})
 			})
 			.then(function() {
-				res.status(201)
+				res.status(201);
 			})
 			.catch(function(err) {
-				console.error('Error in fetching state info', err)
+				console.error('Error in fetching state info', err);
 			})
 
 	},
@@ -183,14 +183,14 @@ module.exports = {
      'CURRENCY RESTRICTIONS FOR EXIT': 'None' },
 	 */
 	fetchStateInfo: function (country, callback) {
-		var url = "http://www.kimonolabs.com/api/ondemand/ebbvwtwk?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath5=" + country + ".html";
+		var url = "http://www.kimonolabs.com/api/ondemand/ebbvwtwk?apikey=ZFsa5estp95igf9lGTKDK8u2iuAfzbOW&kimpath5=" + country.toLowerCase() + ".html";
 
 		request(url, function (err, response) {
 			if(err) {
 				console.error(err);
 			} else {
-				callback(err, response)
+				callback(err, response);
 			}
 		})
 	}
-}
+};
