@@ -25,10 +25,7 @@ var userSchema = new Schema({
   //   type: Schema.Types.Mixed
   //   // type: Schema.Types.Mixed
   // }
-  locations: {
-    type: Schema.Types.Mixed,
-    default: {}
-  }
+  locations: Schema.Types.Mixed
 });
 
 userSchema.methods.comparePasswords = function (candidatePassword) {
