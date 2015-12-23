@@ -1,8 +1,8 @@
 angular.module('whereTo.map', [])
-
+//TODO: only able to pin first result, scope.location undefined
 .controller('MapController', function($scope, $state, MapService, Location, Detail, $rootScope) {
   $scope.location = '';
-  $scope.locations = ["Thailand"]
+  $scope.locations;
   $scope.tab = 1;
 
 /*---------------- INITIALIZE MAP ---------------*/
@@ -11,7 +11,7 @@ angular.module('whereTo.map', [])
         types: ["geocode"]
     });
 
-/*-------------- FETCH SAVED LOCATIONS -------------*/
+  /*-------------- FETCH SAVED LOCATIONS -------------*/
 
   $scope.fetchMarkers = function() {
     console.log($rootScope.user);
@@ -31,12 +31,15 @@ angular.module('whereTo.map', [])
 /*------------------- USER INPUT ------------------*/
   $scope.pinMap = function(location) {
     var result = autocomplete.getPlace();
-    console.log(result);
 
     //location passed from call in fetchMarkers or user input
-    location = location || result.name;
-    $scope.location = location;
+    if(!result) {
+      location = location
+    } else {
+      location = result.name
+    }
 
+    $scope.location = location;
 
     //send to geocoder in mapservice
     var geocoder = new google.maps.Geocoder();
@@ -67,7 +70,7 @@ angular.module('whereTo.map', [])
     });
 
     //if it is a new location, add it to the user's list
-    if(result.name !== undefined) {
+    if(result !== undefined && result.name !== undefined) {
       var data = {
         place: location,
         username: $rootScope.user
@@ -84,18 +87,20 @@ angular.module('whereTo.map', [])
          }
        }
       }
-      console.log('data to add locations', data)
+
       Location.addLocations(data);
       Location.addUserLocation(data);
       
     }
-
-    $scope.map.location = '';
+//TODO: Clear input field after submit
+    $scope.location = '';
   };
 
-  $scope.getLocData = function() {
+  $scope.getLocData = function(loc) {
+    //TODO: handle city vs country
+    console.log('clicked', loc)
     //need to pass user, city, country as query string to GET request
-    Detail.locationDetails({user: 'tester1@gmail.com', city: 'bangkok', country: 'thailand'});
+    Detail.locationDetails({user: $rootScope.user, country: loc});
   }
 
 });
