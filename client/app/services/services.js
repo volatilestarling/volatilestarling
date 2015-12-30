@@ -97,7 +97,8 @@ angular.module('where-to.services', [])
     initMap: initMap
   };
 })
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $location, $window, $state) {
+  //TODO: Persist user through refresh
   var signin = function (user) {
     return $http({
       method: 'POST',
@@ -139,10 +140,10 @@ angular.module('where-to.services', [])
 })
 .factory('Location', function($http) {
   var getLocations = function (user) {
+    var url = '/api/users' + '?user=' + user
     return $http({
       method: 'GET',
-      url: '/api/users',
-      params: user
+      url: url
     })
     .then(function (resp) {
       return resp.data;
@@ -160,16 +161,29 @@ angular.module('where-to.services', [])
     });
   };
 
+  var addUserLocation = function (data) {
+    return $http({
+      method: 'POST',
+      url: '/api/users',
+      data: data
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+
+
   return {
     getLocations: getLocations,
-    addLocations: addLocations
+    addLocations: addLocations,
+    addUserLocation: addUserLocation
   };
 })
 .factory('Detail', function($http) {
   var info;
   var attractions;
   var itinerary;
-
+//TODO: add handling for itinerary
   var addToDo = function(todo) {
     return $http({
       method: 'POST',
@@ -196,14 +210,18 @@ angular.module('where-to.services', [])
   };
 
   var locationDetails = function(data) {
+    var that = this;
+    //var url = '/api/location?' + 'user=' + data.user + '&city=' + data.city + '&country=' + data.country
+    var url = '/api/location?country=' + data.country
     return $http({
       method: 'GET',
-      url: '/api/location',
-      params: data //user, city, country
+      url: url
     })
     .then(function (resp) {
-      info = resp.data.info;
-      attractions = resp.data.location.attractions;
+      that.info = resp.data.info;
+      console.log('info', info)
+      that.attractions = resp.data.attractions;
+      console.log('attractions', attractions)
       return resp.data;
     });
   };
@@ -212,8 +230,8 @@ angular.module('where-to.services', [])
     addToDo: addToDo,
     getToDo: getToDo,
     locationDetails: locationDetails,
-    info: info,
-    attractions: attractions,
-    itinerary: itinerary
+    info: this.info,
+    attractions: this.attractions,
+    itinerary: this.itinerary
   }
 });
